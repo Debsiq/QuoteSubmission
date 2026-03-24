@@ -1,0 +1,444 @@
+
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="quote submission.css"/>
+  <link rel="stylesheet" href="quote submission-desktop-tablet.css"/>
+  <link rel="stylesheet" href="quote submission-mobile.css"/>
+  <script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  const products = {
+    freezeDried: [
+      "Acai Freeze Dried Powder","Acerola Freeze Dried Powder","Apple Freeze Dried Powder","Aronia Freeze Dried Powder",
+      "Banana Freeze Dried Powder","Beetroot Freeze Dried Powder","Blackberry Freeze Dried Powder","Blackcurrant Freeze Dried Powder",
+      "Blueberry Freeze Dried Powder","Brocolli Freeze Dried Powder","Cranberry Freeze Dried Powder","Dragon Fruit (Pitaya) Freeze Dried Powder",
+      "Elderberry Freeze Dried Powder","Goosberry Freeze Dried Powder","Kale Freeze Dried Powder","Lemon Freeze Dried Powder",
+      "Maquiberry Freeze Dried Powder","Mango Freeze Dried Powder","Moringa Air Dried Powder","Peach Freeze Dried Powder",
+      "Peas Freeze Dried Powder","Pineapple Freeze Dried Powder","Raspberry Freeze Dried Powder","Red Currant Freeze Dried Powder",
+      "Spinach Freeze Dried Powder","Strawberry Freeze Dried Powder","Sweet Corn Freeze Dried Powder"
+    ],
+    sprayDried: [
+      "Acai Spray Dried Powder","Acerola Spray Dried Powder 17% Vit C","Acerola Spray Dried Powder 25% Vit C",
+      "Apple Spray Dried Powder","Banana Spray Dried Powder","Beet Spray Dried Powder","Blackberry Spray Dried Powder",
+      "Blueberry Spray Dried Powder","Broccoli Spray Dried Powder","Cabbage Spray Dried Powder","Camu Camu Spray Dried Powder",
+      "Camu Camu Spray Dried Powder 12% Vit C","Camu Camu Spray Dried Powder 20% Vit C","Camu Camu Spray Dried Powder 3% Vit C",
+      "Carrot Spray Dried Powder","Cashew Spray Dried Powder","Coconut Milk Cream Spray Dried Powder","Cupuaçu Spray Dried Powder",
+      "Dragon Fruit Spray Dried Powder (Pitaya)","Elderberry Spray Dried Powder","Grape Spray Dried Powder","Graviola Spray Dried Powder",
+      "Green Tea Spray Dried Powder","Guarana 10% Natural Caffeine Spray Dried Powder","Guarana 2% Natural Caffeine Spray Dried Powder",
+      "Guarana 22% Natural Caffeine Spray Dried Powder","Guarana 5% Natural Caffeine Spray Dried Powder","Guava Spray Dried Powder",
+      "Jabuticaba Spray Dried Powder","Lemon Spray Dried Powder","Mango Spray Dried Powder","Melon Spray Dried Powder",
+      "Orange Spray Dried Powder","Papaya Spray Dried Powder","Passion Fruit Spray Dried Powder","Peach Spray Dried Powder",
+      "Pear Spray Dried Powder","Pineapple Spray Dried Powder","Raspberry Spray Dried Powder","Spinach Spray Dried Powder",
+      "Strawberry Spray Dried Powder","Tamarindo Spray Dried Powder","Tangerine Spray Dried Powder","Tomato Spray Dried Powder",
+      "Watercrest Spray Dried Powder","Watermelon Spray Dried Powder","Yacon Spray Dried Powder",
+      "Yerba Mate Soluble Dry Extract","Yerba Mate Soluble Dry Extract 8% Caffeine","Yerba Mate Toasted Soluble Dry Extract"
+    ],
+    otherDry: [
+      "Camu Camu Powder 12% Vit C (95% Pure) Air Dried",
+      "Camu Camu Powder 5% Vit C (100% Pure) Fluidized Bed Drying",
+      "Camu Camu Powder 8% Vit C (100% Pure) Air Dried",
+      "Graviola Leaf Powder (Soursop) Sundried and OSS",
+      "Moringa Air Dried Powder",
+      "Sugar Beet Powder"
+    ],
+    juice: [
+      "Acai Juice Powder","Acerola Juice Powder","Apple Juice Powder","Banana Juice Powder","Beet Juice Powder",
+      "Blackberry Juice Powder","Blueberry Juice Powder","Broccoli Juice Powder","Cabbage Juice Powder","Carrot Juice Powder",
+      "Cupuaçu Juice Powder","Dragon Fruit Juice Powder","Eggplant Juice Powder","Grape Juice Powder","Graviola Juice Powder",
+      "Guava Juice Powder","Lime Juice Powder","Mango Juice Powder","Melon Juice Powder","Orange Juice Powder",
+      "Papaya Juice Powder","Passion Fruit Juice Powder","Peach Juice Powder","Pear Juice Powder",
+      "Pineapple Juice Powder","Raspberry Juice Powder","Spinach Juice Powder","Tomato Juice Powder"
+    ],
+    inclusions: [
+      "Acai Cubes and Bits","Acerola Cubes and Bits","Apple Cubes and Bits","Banana Cubes and Bits","Blackberry Cubes and Bits",
+      "Blueberry Cubes and Bits","Lime Cubes and Bits","Mango Cubes and Bits","Orange Cubes and Bits",
+      "Passion Fruit Cubes and Bits","Pineapple Cubes and Bits","Raspberry Cubes and Bits","Strawberry Cubes and Bits"
+    ]
+  };
+
+  const selectedProducts = {};
+  const selectedProductsContainer = document.getElementById('selectedProductsContainer');
+  const selectedProductsList = document.getElementById('selectedProductsList');
+  const productsDataInput = document.getElementById('dmform-5');
+  const form = document.getElementById('1624702506');
+  const subjectInput = document.getElementById('dmformsubject');
+  const companyInput = document.getElementById('dmform-1');
+  const documentsInput = document.getElementById('documents');
+  const fileList = document.getElementById('fileList');
+
+  function renderProducts() {
+    renderProductCategory('freezeDriedList', products.freezeDried);
+    renderProductCategory('sprayDriedList', products.sprayDried);
+    renderProductCategory('otherDryList', products.otherDry);
+    renderProductCategory('juiceList', products.juice);
+    renderProductCategory('inclusionsList', products.inclusions);
+    bindProductEvents();
+  }
+
+  function renderProductCategory(elementId, productList) {
+    const container = document.getElementById(elementId);
+    if (!container) return;
+
+    container.innerHTML = '';
+
+    productList.forEach(function (productName, index) {
+      const productId = `${elementId}-${index}`;
+      const div = document.createElement('div');
+      div.className = 'product-item';
+      div.dataset.productId = productId;
+
+      div.innerHTML = `
+        <div class="product-name">${productName}</div>
+
+        <div class="product-fields">
+          <div class="product-field">
+            <label>Quote Request</label>
+            <div class="unit-group">
+              <input type="number" class="product-moq" placeholder="Amount" min="0" step="0.1">
+              <select class="product-moq-unit">
+                <option value="kg">KG</option>
+                <option value="lb">LB</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="product-field">
+            <label>Target Price</label>
+            <div class="unit-group">
+              <input type="number" class="product-price" placeholder="Price" min="0" step="0.01">
+              <select class="product-price-unit">
+                <option value="kg">KG</option>
+                <option value="lb">LB</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="product-field">
+            <label>Annual Qty</label>
+            <div class="unit-group">
+              <input type="number" class="product-annual" placeholder="Amount" min="0" step="0.1">
+              <select class="product-annual-unit">
+                <option value="kg">KG</option>
+                <option value="lb">LB</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="product-field">
+            <label>Sample</label>
+            <select class="product-sample">
+              <option value="no">No</option>
+              <option value="yes">Yes</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="btn-group">
+          <button type="button" class="btn-add-product" data-product-id="${productId}" data-product-name="${productName}">Add to Quote</button>
+          <button type="button" class="btn-remove-product" data-product-id="${productId}" style="display:none;">Remove</button>
+        </div>
+      `;
+
+      container.appendChild(div);
+    });
+  }
+
+  function getProductItem(button) {
+    return button.closest('.product-item');
+  }
+
+  function normalizeValue(value) {
+    return value && String(value).trim() !== '' ? String(value).trim() : '';
+  }
+
+  function getProductData(productItem, button) {
+    const quantity = normalizeValue(productItem.querySelector('.product-moq')?.value);
+    const quantityUnit = normalizeValue(productItem.querySelector('.product-moq-unit')?.value).toLowerCase();
+    const targetPrice = normalizeValue(productItem.querySelector('.product-price')?.value);
+    const priceUnit = normalizeValue(productItem.querySelector('.product-price-unit')?.value).toLowerCase();
+    const annualQty = normalizeValue(productItem.querySelector('.product-annual')?.value);
+    const annualUnit = normalizeValue(productItem.querySelector('.product-annual-unit')?.value).toLowerCase();
+    const sample = normalizeValue(productItem.querySelector('.product-sample')?.value).toLowerCase() || 'no';
+
+    return {
+      id: button.dataset.productId || '',
+      name: button.dataset.productName || '',
+      quantity: quantity || '-',
+      quantityUnit: quantity ? quantityUnit : '',
+      targetPrice: targetPrice || '-',
+      priceUnit: targetPrice ? priceUnit : '',
+      annualQty: annualQty || '-',
+      annualUnit: annualQty ? annualUnit : '',
+      sample: sample || 'no'
+    };
+  }
+
+  function renderSelectedProducts() {
+    const productsArray = Object.values(selectedProducts);
+
+    if (!productsArray.length) {
+      if (selectedProductsContainer) selectedProductsContainer.style.display = 'none';
+      if (selectedProductsList) selectedProductsList.innerHTML = '';
+      if (productsDataInput) productsDataInput.value = '';
+      return;
+    }
+
+    if (selectedProductsContainer) selectedProductsContainer.style.display = 'block';
+
+    if (selectedProductsList) {
+      selectedProductsList.innerHTML = productsArray.map(function (product) {
+        return `
+          <div class="selected-item">
+            <div class="selected-item-name">${product.name}</div>
+            <div class="selected-item-details">
+              <div class="selected-item-detail"><strong>Quote Request:</strong> ${product.quantity}${product.quantityUnit ? ' ' + product.quantityUnit : ''}</div>
+              <div class="selected-item-detail"><strong>Target Price:</strong> ${product.targetPrice === '-' ? '-' : `$${product.targetPrice}/${product.priceUnit}`}</div>
+              <div class="selected-item-detail"><strong>Annual Qty:</strong> ${product.annualQty === '-' ? '-' : `${product.annualQty} ${product.annualUnit}`}</div>
+              <div class="selected-item-detail"><strong>Sample:</strong> ${product.sample === 'yes' ? 'Yes' : 'No'}</div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    if (productsDataInput) {
+    productsDataInput.value = '\n' + productsArray.map(function (product, index) {
+        const lines = [
+          `Fruit: ${product.name}`,
+          `Quote Request: ${product.quantity}${product.quantityUnit ? ' ' + product.quantityUnit : ''}`
+        ];
+    
+        if (product.targetPrice !== '-') {
+          lines.push(`Target Price: $${product.targetPrice}/${product.priceUnit}`);
+        }
+    
+        if (product.annualQty !== '-') {
+          lines.push(`Annual Qty: ${product.annualQty} ${product.annualUnit}`);
+        }
+    
+        lines.push(`Sample: ${product.sample === 'yes' ? 'Yes' : 'No'}`);
+        lines.push('------------------------------');
+    
+        return lines.join('\n');
+      }).join('\n\n');
+    }
+  }
+
+  function addProduct(button) {
+    const productItem = getProductItem(button);
+    if (!productItem) return;
+
+    const removeButton = productItem.querySelector('.btn-remove-product');
+    const data = getProductData(productItem, button);
+
+    if (!data.quantity || data.quantity === '-') {
+      alert('Please fill in the Quote Request field.');
+      return;
+    }
+
+    selectedProducts[data.id] = data;
+    button.style.display = 'none';
+    if (removeButton) removeButton.style.display = 'inline-block';
+
+    renderSelectedProducts();
+  }
+
+  function removeProduct(button) {
+    const productItem = getProductItem(button);
+    if (!productItem) return;
+
+    const addButton = productItem.querySelector('.btn-add-product');
+    const productId = button.dataset.productId;
+
+    delete selectedProducts[productId];
+    button.style.display = 'none';
+    if (addButton) addButton.style.display = 'inline-block';
+
+    renderSelectedProducts();
+  }
+
+  function attachLiveUpdate(productItem) {
+    const addButton = productItem.querySelector('.btn-add-product');
+    const productId = addButton ? addButton.dataset.productId : null;
+    const fields = productItem.querySelectorAll('input, select, textarea');
+
+    fields.forEach(function (field) {
+      field.addEventListener('input', function () {
+        if (productId && selectedProducts[productId] && addButton) {
+          selectedProducts[productId] = getProductData(productItem, addButton);
+          renderSelectedProducts();
+        }
+      });
+
+      field.addEventListener('change', function () {
+        if (productId && selectedProducts[productId] && addButton) {
+          selectedProducts[productId] = getProductData(productItem, addButton);
+          renderSelectedProducts();
+        }
+      });
+    });
+  }
+
+  function bindProductEvents() {
+    document.querySelectorAll('.btn-add-product').forEach(function (button) {
+      button.addEventListener('click', function () {
+        addProduct(this);
+      });
+    });
+
+    document.querySelectorAll('.btn-remove-product').forEach(function (button) {
+      button.addEventListener('click', function () {
+        removeProduct(this);
+      });
+    });
+
+    document.querySelectorAll('.product-item').forEach(function (productItem) {
+      attachLiveUpdate(productItem);
+    });
+  }
+
+  function updateFileList() {
+    if (!documentsInput || !fileList) return;
+
+    const files = documentsInput.files;
+
+    if (!files || files.length === 0) {
+      fileList.style.display = 'none';
+      fileList.innerHTML = '';
+      return;
+    }
+
+    fileList.style.display = 'block';
+    fileList.innerHTML = '<strong>Selected Files:</strong>';
+
+    Array.from(files).forEach(function (file, index) {
+      const fileItem = document.createElement('div');
+      fileItem.className = 'file-item';
+      fileItem.innerHTML = `
+        <span class="file-name">📎 ${file.name}</span>
+        <button type="button" class="file-remove" data-file-index="${index}">Remove</button>
+      `;
+      fileList.appendChild(fileItem);
+    });
+  }
+
+  function removeFile(index) {
+    if (!documentsInput) return;
+
+    const dataTransfer = new DataTransfer();
+    const files = documentsInput.files;
+
+    for (let i = 0; i < files.length; i++) {
+      if (i !== index) {
+        dataTransfer.items.add(files[i]);
+      }
+    }
+
+    documentsInput.files = dataTransfer.files;
+    updateFileList();
+  }
+
+  if (documentsInput) {
+    documentsInput.addEventListener('change', updateFileList);
+  }
+
+  document.addEventListener('click', function (e) {
+    if (e.target.classList.contains('file-remove')) {
+      const index = parseInt(e.target.getAttribute('data-file-index'), 10);
+      if (!Number.isNaN(index)) {
+        removeFile(index);
+      }
+    }
+  });
+function updateEmailSubject() {
+  if (!subjectInput) return;
+
+  const company = companyInput ? companyInput.value.trim() : '';
+
+  if (company) {
+    subjectInput.value = `Quote Submission - ${company}`;
+  } else {
+    subjectInput.value = 'Quote Submission';
+  }
+}
+  if (form) {
+    form.addEventListener('submit', function (e) {
+        updateEmailSubject();
+      renderSelectedProducts();
+
+      if (!Object.keys(selectedProducts).length) {
+        e.preventDefault();
+        alert('Please add at least one product to the quote.');
+        return;
+      }
+
+      if (productsDataInput && !productsDataInput.value.trim()) {
+        e.preventDefault();
+        alert('Please add at least one product to the quote.');
+      }
+    });
+
+    form.addEventListener('reset', function () {
+      setTimeout(function () {
+        Object.keys(selectedProducts).forEach(function (key) {
+          delete selectedProducts[key];
+        });
+
+        document.querySelectorAll('.btn-add-product').forEach(function (btn) {
+          btn.style.display = 'inline-block';
+        });
+
+        document.querySelectorAll('.btn-remove-product').forEach(function (btn) {
+          btn.style.display = 'none';
+        });
+
+        renderSelectedProducts();
+        updateFileList();
+      }, 0);
+    });
+  }
+
+  renderProducts();
+  renderSelectedProducts();
+  updateFileList();
+});
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  </script>
