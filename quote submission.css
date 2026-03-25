@@ -223,6 +223,22 @@
 *#dm *.dmBody #field-documents label {
     margin-bottom: 4px !important;
 }
+.dmformsubmit {
+    position: fixed !important;
+    right: 24px;
+    bottom: 24px;
+    z-index: 9999 !important;
+    margin: 0 !important;
+}
+
+.dmformsubmit input[type="submit"] {
+    background: linear-gradient(135deg, #2c5f2d 0%, #1e4620 100%) !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 999px !important;
+    padding: 14px 24px !important;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.18) !important;
+}
 /* ADD CUSTOM CSS TO THE PAGE - THIS AFFECTS ALL DEVICES */
 * {
     margin: 0;
