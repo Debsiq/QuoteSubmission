@@ -6,6 +6,18 @@
   <link rel="stylesheet" href="quote submission-mobile.css"/>
   <script>
 
+
+
+
+
+
+
+
+
+
+
+
+
 document.addEventListener('DOMContentLoaded', function () {
   const products = {
     freezeDried: [
@@ -351,43 +363,295 @@ document.addEventListener('DOMContentLoaded', function () {
       }, 0);
     });
   }
-const submitWrap = document.getElementById('1032578054');
-  const formWrapper = document.getElementById('1388434014');
-
-  function updateFloatingSubmit() {
-    if (!submitWrap || !form) return;
-
-    submitWrap.classList.remove('is-stopped');
-
-    const formRect = form.getBoundingClientRect();
-    const wrapRect = submitWrap.getBoundingClientRect();
-    const stopOffset = 24;
-    const sideOffset = 32;
-
-    const targetLeft = formRect.right - wrapRect.width - sideOffset;
-    submitWrap.style.left = targetLeft + 'px';
-
-    const viewportBottom = window.innerHeight - stopOffset;
-    const formBottomReached = formRect.bottom <= viewportBottom + wrapRect.height;
-
-    if (formBottomReached) {
-      submitWrap.classList.add('is-stopped');
-
-      const wrapperRect = formWrapper
-        ? formWrapper.getBoundingClientRect()
-        : form.parentElement.getBoundingClientRect();
-
-      const absoluteLeft = formRect.right - wrapperRect.left - wrapRect.width - sideOffset;
-      submitWrap.style.left = absoluteLeft + 'px';
-    }
-  }
-
-  window.addEventListener('scroll', updateFloatingSubmit);
-  window.addEventListener('resize', updateFloatingSubmit);
 
   renderProducts();
   renderSelectedProducts();
   updateEmailSubject();
-  updateFloatingSubmit();
 });
-</script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  </script>
+  <script>
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("1624702506");
+  const realWrap = document.getElementById("1032578054");
+  const realButton = realWrap ? realWrap.querySelector('input[type="submit"]') : null;
+
+  if (!form || !realWrap || !realButton) return;
+
+  const floatingWrap = document.createElement("div");
+  floatingWrap.id = "floatingQuoteSubmit";
+
+  const floatingButton = document.createElement("button");
+  floatingButton.type = "button";
+  floatingButton.textContent = realButton.value || "Submit Quote Request";
+
+  floatingWrap.appendChild(floatingButton);
+  document.body.appendChild(floatingWrap);
+
+  floatingButton.addEventListener("click", function () {
+    realButton.click();
+  });
+
+  function updateFloatingButton() {
+    const formRect = form.getBoundingClientRect();
+    const realRect = realWrap.getBoundingClientRect();
+
+    const formStarted = formRect.top < window.innerHeight * 0.8;
+    const formStillActive = formRect.bottom > 140;
+
+    const realButtonAlreadyVisible =
+      realRect.top < window.innerHeight - 120;
+
+    if (formStarted && formStillActive && !realButtonAlreadyVisible) {
+      floatingWrap.classList.add("is-visible");
+    } else {
+      floatingWrap.classList.remove("is-visible");
+    }
+  }
+
+  window.addEventListener("scroll", updateFloatingButton, { passive: true });
+  window.addEventListener("resize", updateFloatingButton);
+  updateFloatingButton();
+});
+
+  
+
+  
+
+  
+
+  
+
+  </script>
+  <script>
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const filter = document.getElementById("processFilter");
+  const categories = document.querySelectorAll(".category[data-process]");
+
+  if (!filter || !categories.length) return;
+
+  function applyProcessFilter() {
+    const selected = filter.value;
+
+    categories.forEach(function (category) {
+      const process = category.getAttribute("data-process");
+
+      if (selected === "all" || process === selected) {
+        category.classList.remove("is-hidden");
+      } else {
+        category.classList.add("is-hidden");
+      }
+    });
+  }
+
+  filter.addEventListener("change", applyProcessFilter);
+  applyProcessFilter();
+});
+
+
+  
+
+  
+
+  
+
+  </script>
+  <script>
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const section = document.getElementById("1334990580");
+  const filter = document.getElementById("botanicalSideFilter");
+
+  if (!section || !filter) return;
+
+  let currentBotanical = "all";
+
+  function normalizeText(text) {
+    return (text || "")
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .trim();
+  }
+
+  /* ajuste fino aqui se quiser classificar nomes exatos */
+  const botanicalOverrides = {
+    "acai": "fruit",
+    "acerola": "fruit",
+    "blackberry": "fruit",
+    "blueberry": "fruit",
+    "camu camu": "fruit",
+    "cranberry": "fruit",
+    "dragon fruit": "fruit",
+    "graviola": "fruit",
+    "guarana": "fruit",
+    "guava": "fruit",
+    "jabuticaba": "fruit",
+    "lemon": "fruit",
+    "lime": "fruit",
+    "mango": "fruit",
+    "orange": "fruit",
+    "papaya": "fruit",
+    "passion fruit": "fruit",
+    "pineapple": "fruit",
+    "raspberry": "fruit",
+    "strawberry": "fruit",
+    "soursop": "fruit",
+
+    "beet": "vegetable",
+    "broccoli": "vegetable",
+    "carrot": "vegetable",
+    "kale": "vegetable",
+    "pumpkin": "vegetable",
+    "spinach": "vegetable",
+    "sweet potato": "vegetable",
+    "tomato": "vegetable",
+
+    "basil": "herb",
+    "chamomile": "herb",
+    "ginger": "herb",
+    "hibiscus": "herb",
+    "maca": "herb",
+    "matcha": "herb",
+    "mint": "herb",
+    "moringa": "herb",
+    "oregano": "herb",
+    "parsley": "herb",
+    "rosemary": "herb",
+    "sage": "herb",
+    "thyme": "herb",
+    "turmeric": "herb",
+    "yerba mate": "herb"
+  };
+
+  const botanicalKeywords = {
+    fruit: [
+      "fruit", "berry", "acai", "acerola", "camu camu", "mango", "pineapple",
+      "orange", "lime", "lemon", "papaya", "banana", "guava", "graviola",
+      "soursop", "passion", "raspberry", "blueberry", "blackberry",
+      "strawberry", "cranberry", "jabuticaba"
+    ],
+    vegetable: [
+      "vegetable", "beet", "carrot", "kale", "spinach", "broccoli",
+      "pumpkin", "sweet potato", "tomato", "cucumber", "celery"
+    ],
+    herb: [
+      "herb", "botanical", "moringa", "guarana", "maca", "ginger", "turmeric",
+      "mint", "basil", "rosemary", "sage", "oregano", "thyme", "matcha",
+      "green tea", "yerba mate", "hibiscus", "chamomile", "parsley"
+    ]
+  };
+
+  function getBotanicalType(productName) {
+    const normalized = normalizeText(productName);
+
+    for (const key in botanicalOverrides) {
+      if (normalized.includes(key)) return botanicalOverrides[key];
+    }
+
+    for (const type in botanicalKeywords) {
+      const found = botanicalKeywords[type].some(function (keyword) {
+        return normalized.includes(keyword);
+      });
+      if (found) return type;
+    }
+
+    return "unmapped";
+  }
+
+  function classifyProducts() {
+    section.querySelectorAll(".product-item").forEach(function (item) {
+      const nameEl = item.querySelector(".product-name");
+      if (!nameEl) return;
+
+      const productName = nameEl.textContent || "";
+      item.setAttribute("data-botanical", getBotanicalType(productName));
+    });
+  }
+
+  function applyBotanicalFilter() {
+    section.querySelectorAll(".category").forEach(function (category) {
+      const items = category.querySelectorAll(".product-item");
+      let visibleCount = 0;
+
+      items.forEach(function (item) {
+        const type = item.getAttribute("data-botanical") || "unmapped";
+        const shouldShow = currentBotanical === "all" || type === currentBotanical;
+
+        item.classList.toggle("botanical-item-hidden", !shouldShow);
+
+        if (shouldShow) visibleCount++;
+      });
+
+      if (items.length > 0) {
+        category.classList.toggle("botanical-hidden", visibleCount === 0);
+      }
+    });
+  }
+
+  filter.querySelectorAll("button[data-botanical]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      currentBotanical = this.getAttribute("data-botanical");
+
+      filter.querySelectorAll("button").forEach(function (btn) {
+        btn.classList.remove("is-active");
+      });
+
+      this.classList.add("is-active");
+      applyBotanicalFilter();
+    });
+  });
+
+  /* importante: observa quando os produtos são renderizados dinamicamente */
+  const observer = new MutationObserver(function () {
+    classifyProducts();
+    applyBotanicalFilter();
+  });
+
+  observer.observe(section, {
+    childList: true,
+    subtree: true
+  });
+
+  classifyProducts();
+  applyBotanicalFilter();
+});
+
+
+  
+
+  </script>
