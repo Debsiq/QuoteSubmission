@@ -99,35 +99,77 @@
         <p style="text-align: center;" id="1103354309">
          Choose products and specify Quote Request, Target Price, Annual Qty and Sample needs.
         </p>
-        <div class="category" id="1098245227">
+        <div class="botanical-side-filter" id="botanicalSideFilter">
+         <div class="botanical-side-filter-title">
+          Filter by ingredient type
+         </div>
+         <button type="button" class="is-active" data-botanical="all">
+          All
+         </button>
+         <button type="button" data-botanical="fruit">
+          Fruits
+         </button>
+         <button type="button" data-botanical="vegetable">
+          Vegetables
+         </button>
+         <button type="button" data-botanical="herb">
+          Herbs
+         </button>
+        </div>
+        <div class="process-filter-wrap">
+         <label for="processFilter">
+          Filter by process
+         </label>
+         <select id="processFilter">
+          <option value="all">
+           All Products
+          </option>
+          <option value="freeze">
+           Freeze Dried
+          </option>
+          <option value="spray-extract">
+           Spray Dried Extract
+          </option>
+          <option value="other-dry">
+           Other / New Dry Processes
+          </option>
+          <option value="juice">
+           Spray Dried Juice 2:1
+          </option>
+          <option value="inclusions">
+           Fruit Inclusions
+          </option>
+         </select>
+        </div>
+        <div class="category" id="1098245227" data-process="freeze">
          <div class="category-title" style="text-align: center;" id="1373703353">
           FREEZE DRIED POWDERS (100% Pure Powders)
          </div>
          <div class="product-list" id="freezeDriedList">
          </div>
         </div>
-        <div class="category" id="1337599647">
+        <div class="category" id="1337599647" data-process="spray-extract">
          <div class="category-title" style="text-align: center;" id="1611572364">
           SPRAY DRIED EXTRACT POWDERS (NMT 20% Carrier)
          </div>
          <div class="product-list" id="sprayDriedList">
          </div>
         </div>
-        <div class="category" id="1876078605">
+        <div class="category" id="1876078605" data-process="other-dry">
          <div class="category-title" style="text-align: center;" id="1712371731">
           OTHER AND NEW DRY PROCESSES
          </div>
          <div class="product-list" id="otherDryList">
          </div>
         </div>
-        <div class="category" id="1956110508">
+        <div class="category" id="1956110508" data-process="juice">
          <div class="category-title" style="text-align: center;" id="1767266647">
           SPRAY DRIED JUICE POWDERS 2:1
          </div>
          <div class="product-list" id="juiceList">
          </div>
         </div>
-        <div class="category" id="1999964998">
+        <div class="category" id="1999964998" data-process="inclusions">
          <div class="category-title" style="text-align: center;" id="1053113800">
           FRUIT INCLUSIONS
          </div>
