@@ -211,46 +211,26 @@
 *#dm *.dmBody #field-documents label {
     margin-bottom: 4px !important;
 }
-
-/* botão flutuante do submit */
-#1032578054.dmformsubmit {
-    position: fixed !important;
-    bottom: 24px !important;
-    left: auto !important;
-    right: auto !important;
+*#dm *.dmBody *.u_1639225607 .dmformsubmit {
     float: none !important;
-    margin: 0 !important;
     width: auto !important;
+    margin: 0 !important;
+}
+
+/* BOTAO */
+/* botão submit - versão limpa baseada no original */
+.dmformsubmit {
+    position: fixed !important;
+    right: 24px;
+    bottom: 24px;
     z-index: 9999 !important;
-    transform: none !important;
+    margin: 0 !important;
 }
 
-#1032578054.dmformsubmit.is-stopped {
-    position: absolute !important;
-    bottom: 0 !important;
-}
 
-#1032578054.dmformsubmit input[type="submit"] {
-    background: linear-gradient(135deg, #2c5f2d 0%, #1e4620 100%) !important;
-    color: #fff !important;
-    border: none !important;
-    border-radius: 999px !important;
-    padding: 14px 24px !important;
-    box-shadow: 0 10px 24px rgba(0,0,0,0.18) !important;
-    cursor: pointer !important;
-    transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease !important;
-}
-
-#1032578054.dmformsubmit input[type="submit"]:hover {
-    background: linear-gradient(135deg, #3a7a3c 0%, #275a2a 100%) !important;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.22) !important;
-    transform: translateY(-2px) !important;
-}
-
-#1032578054.dmformsubmit input[type="submit"]:active {
+.dmformsubmit input[type="submit"]:active {
     transform: translateY(0) !important;
 }
-
 /* ADD CUSTOM CSS TO THE PAGE - THIS AFFECTS ALL DEVICES */
 * {
     margin: 0;
