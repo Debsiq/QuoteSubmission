@@ -218,18 +218,258 @@
 }
 
 /* BOTAO */
-/* botão submit - versão limpa baseada no original */
-.dmformsubmit {
-    position: fixed !important;
-    right: 24px;
-    bottom: 24px;
-    z-index: 9999 !important;
-    margin: 0 !important;
+/* botão real no final do formulário */
+#1032578054.dmformsubmit {
+    position: relative !important;
+    right: auto !important;
+    bottom: auto !important;
+    z-index: 2 !important;
+    margin-top: 28px !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+    float: none !important;
 }
 
+#1032578054.dmformsubmit input[type="submit"] {
+    background: linear-gradient(135deg, #2c5f2d 0%, #1e4620 100%) !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 999px !important;
+    padding: 14px 24px !important;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.18) !important;
+    cursor: pointer !important;
+}
 
-.dmformsubmit input[type="submit"]:active {
-    transform: translateY(0) !important;
+/* botão flutuante clone */
+#floatingQuoteSubmit {
+    position: fixed;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 10px;
+    border-radius: 999px;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+}
+
+#floatingQuoteSubmit.is-visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+#floatingQuoteSubmit button {
+    background: linear-gradient(135deg, #2c5f2d 0%, #1e4620 100%);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: 14px 24px;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.16);
+}
+
+#floatingQuoteSubmit button:hover {
+    transform: translateY(-1px);
+}
+
+@media (max-width: 767px) {
+    #floatingQuoteSubmit {
+        right: 16px;
+        left: 16px;
+        top: auto;
+        bottom: 16px;
+        transform: none;
+        border-radius: 18px;
+        padding: 8px;
+    }
+
+    #floatingQuoteSubmit button {
+        width: 100%;
+        text-align: center;
+    }
+
+    #1032578054.dmformsubmit {
+        justify-content: stretch !important;
+    }
+
+    #1032578054.dmformsubmit input[type="submit"] {
+        width: 100% !important;
+    }
+}
+ /* FILTRO */
+.process-filter-wrap {
+    margin: 0 0 24px 0;
+    padding: 18px 20px;
+    background: linear-gradient(135deg, #f7faf7 0%, #eef5ef 100%);
+    border: 1px solid #dfe9df;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+}
+
+.process-filter-wrap label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.78em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: #1e4620;
+}
+
+.process-filter-wrap select {
+    width: 100%;
+    max-width: 320px;
+    padding: 12px 14px;
+    border: 1px solid #d8d8d8;
+    border-radius: 14px;
+    background: #fff;
+    color: #333;
+    font-size: 0.95em;
+    font-family: inherit;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+
+.process-filter-wrap select:focus {
+    outline: none;
+    border-color: #2c5f2d;
+    box-shadow: 0 0 0 4px rgba(44, 95, 45, 0.08);
+}
+
+.category.is-hidden {
+    display: none !important;
+}
+/* FILTRO FRUTAS */
+/* layout com filtro lateral */
+#1334990580.form-section {
+    display: grid;
+    grid-template-columns: 240px minmax(0, 1fr);
+    column-gap: 24px;
+    row-gap: 20px;
+    align-items: start;
+}
+
+#1334990580.form-section > h2,
+#1334990580.form-section > p {
+    grid-column: 1 / -1;
+}
+
+#1334990580.form-section > .botanical-side-filter {
+    grid-column: 1;
+    grid-row: 3 / span 20;
+    position: sticky;
+    top: 24px;
+    align-self: start;
+}
+
+#1334990580.form-section > .process-filter-wrap,
+#1334990580.form-section > .category {
+    grid-column: 2;
+}
+
+/* card do filtro lateral */
+.botanical-side-filter {
+    background: linear-gradient(135deg, #f7faf7 0%, #eef5ef 100%);
+    border: 1px solid #dfe9df;
+    border-radius: 14px;
+    padding: 18px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+}
+
+.botanical-side-filter-title {
+    font-size: 0.8em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.45px;
+    color: #1e4620;
+    margin-bottom: 12px;
+}
+
+.botanical-side-filter button {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+    padding: 12px 14px;
+    border: 1px solid #d8e3d8;
+    border-radius: 12px;
+    background: #fff;
+    color: #2f2f2f;
+    font: inherit;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.22s ease;
+}
+
+.botanical-side-filter button:last-child {
+    margin-bottom: 0;
+}
+
+.botanical-side-filter button:hover {
+    border-color: #2c5f2d;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(44, 95, 45, 0.08);
+}
+
+.botanical-side-filter button.is-active {
+    background: linear-gradient(135deg, #2c5f2d 0%, #1e4620 100%);
+    color: #fff;
+    border-color: #2c5f2d;
+    box-shadow: 0 8px 18px rgba(44, 95, 45, 0.18);
+}
+
+/* esconder itens/categorias pelo filtro */
+.botanical-item-hidden {
+    display: none !important;
+}
+
+.category.botanical-hidden {
+    display: none !important;
+}
+
+/* responsivo */
+@media (max-width: 991px) {
+    #1334990580.form-section {
+        grid-template-columns: 1fr;
+    }
+
+    #1334990580.form-section > .botanical-side-filter,
+    #1334990580.form-section > .process-filter-wrap,
+    #1334990580.form-section > .category {
+        grid-column: 1;
+        grid-row: auto;
+    }
+
+    #1334990580.form-section > .botanical-side-filter {
+        position: static;
+        padding: 14px;
+    }
+
+    .botanical-side-filter {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .botanical-side-filter-title {
+        width: 100%;
+        margin-bottom: 2px;
+    }
+
+    .botanical-side-filter button {
+        width: auto;
+        margin-bottom: 0;
+        text-align: center;
+    }
 }
 /* ADD CUSTOM CSS TO THE PAGE - THIS AFFECTS ALL DEVICES */
 * {
