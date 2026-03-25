@@ -6,25 +6,6 @@
   <link rel="stylesheet" href="quote submission-mobile.css"/>
   <script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 document.addEventListener('DOMContentLoaded', function () {
   const products = {
     freezeDried: [
@@ -80,10 +61,24 @@ document.addEventListener('DOMContentLoaded', function () {
   const selectedProductsList = document.getElementById('selectedProductsList');
   const productsDataInput = document.getElementById('dmform-5');
   const form = document.getElementById('1624702506');
+
   const subjectInput = document.getElementById('dmformsubject');
   const companyInput = document.getElementById('dmform-1');
-  const documentsInput = document.getElementById('documents');
-  const fileList = document.getElementById('fileList');
+
+  function updateEmailSubject() {
+    if (!subjectInput) return;
+
+    const company = companyInput ? companyInput.value.trim() : '';
+
+    if (company) {
+      const newSubject = `Quote Submission - ${company}`;
+      subjectInput.value = newSubject;
+      subjectInput.setAttribute('data-email-subject', newSubject);
+    } else {
+      subjectInput.value = 'Quote Submission';
+      subjectInput.setAttribute('data-email-subject', 'Quote Submission');
+    }
+  }
 
   function renderProducts() {
     renderProductCategory('freezeDriedList', products.freezeDried);
@@ -108,7 +103,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
       div.innerHTML = `
         <div class="product-name">${productName}</div>
-
         <div class="product-fields">
           <div class="product-field">
             <label>Quote Request</label>
@@ -221,23 +215,23 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     if (productsDataInput) {
-    productsDataInput.value = '\n' + productsArray.map(function (product, index) {
+      productsDataInput.value = '\n' + productsArray.map(function (product, index) {
         const lines = [
-          `Fruit: ${product.name}`,
+          `Name: ${product.name}`,
           `Quote Request: ${product.quantity}${product.quantityUnit ? ' ' + product.quantityUnit : ''}`
         ];
-    
+
         if (product.targetPrice !== '-') {
           lines.push(`Target Price: $${product.targetPrice}/${product.priceUnit}`);
         }
-    
+
         if (product.annualQty !== '-') {
           lines.push(`Annual Qty: ${product.annualQty} ${product.annualUnit}`);
         }
-    
+
         lines.push(`Sample: ${product.sample === 'yes' ? 'Yes' : 'No'}`);
         lines.push('------------------------------');
-    
+
         return lines.join('\n');
       }).join('\n\n');
     }
@@ -316,73 +310,14 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  function updateFileList() {
-    if (!documentsInput || !fileList) return;
-
-    const files = documentsInput.files;
-
-    if (!files || files.length === 0) {
-      fileList.style.display = 'none';
-      fileList.innerHTML = '';
-      return;
-    }
-
-    fileList.style.display = 'block';
-    fileList.innerHTML = '<strong>Selected Files:</strong>';
-
-    Array.from(files).forEach(function (file, index) {
-      const fileItem = document.createElement('div');
-      fileItem.className = 'file-item';
-      fileItem.innerHTML = `
-        <span class="file-name">📎 ${file.name}</span>
-        <button type="button" class="file-remove" data-file-index="${index}">Remove</button>
-      `;
-      fileList.appendChild(fileItem);
-    });
+  if (companyInput) {
+    companyInput.addEventListener('input', updateEmailSubject);
+    companyInput.addEventListener('change', updateEmailSubject);
   }
 
-  function removeFile(index) {
-    if (!documentsInput) return;
-
-    const dataTransfer = new DataTransfer();
-    const files = documentsInput.files;
-
-    for (let i = 0; i < files.length; i++) {
-      if (i !== index) {
-        dataTransfer.items.add(files[i]);
-      }
-    }
-
-    documentsInput.files = dataTransfer.files;
-    updateFileList();
-  }
-
-  if (documentsInput) {
-    documentsInput.addEventListener('change', updateFileList);
-  }
-
-  document.addEventListener('click', function (e) {
-    if (e.target.classList.contains('file-remove')) {
-      const index = parseInt(e.target.getAttribute('data-file-index'), 10);
-      if (!Number.isNaN(index)) {
-        removeFile(index);
-      }
-    }
-  });
-function updateEmailSubject() {
-  if (!subjectInput) return;
-
-  const company = companyInput ? companyInput.value.trim() : '';
-
-  if (company) {
-    subjectInput.value = `Quote Submission - ${company}`;
-  } else {
-    subjectInput.value = 'Quote Submission';
-  }
-}
   if (form) {
     form.addEventListener('submit', function (e) {
-        updateEmailSubject();
+      updateEmailSubject();
       renderSelectedProducts();
 
       if (!Object.keys(selectedProducts).length) {
@@ -412,33 +347,15 @@ function updateEmailSubject() {
         });
 
         renderSelectedProducts();
-        updateFileList();
+        updateEmailSubject();
       }, 0);
     });
   }
 
   renderProducts();
   renderSelectedProducts();
-  updateFileList();
+  updateEmailSubject();
 });
 
-
   
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
   </script>
