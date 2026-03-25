@@ -351,11 +351,43 @@ document.addEventListener('DOMContentLoaded', function () {
       }, 0);
     });
   }
+const submitWrap = document.getElementById('1032578054');
+  const formWrapper = document.getElementById('1388434014');
+
+  function updateFloatingSubmit() {
+    if (!submitWrap || !form) return;
+
+    submitWrap.classList.remove('is-stopped');
+
+    const formRect = form.getBoundingClientRect();
+    const wrapRect = submitWrap.getBoundingClientRect();
+    const stopOffset = 24;
+    const sideOffset = 32;
+
+    const targetLeft = formRect.right - wrapRect.width - sideOffset;
+    submitWrap.style.left = targetLeft + 'px';
+
+    const viewportBottom = window.innerHeight - stopOffset;
+    const formBottomReached = formRect.bottom <= viewportBottom + wrapRect.height;
+
+    if (formBottomReached) {
+      submitWrap.classList.add('is-stopped');
+
+      const wrapperRect = formWrapper
+        ? formWrapper.getBoundingClientRect()
+        : form.parentElement.getBoundingClientRect();
+
+      const absoluteLeft = formRect.right - wrapperRect.left - wrapRect.width - sideOffset;
+      submitWrap.style.left = absoluteLeft + 'px';
+    }
+  }
+
+  window.addEventListener('scroll', updateFloatingSubmit);
+  window.addEventListener('resize', updateFloatingSubmit);
 
   renderProducts();
   renderSelectedProducts();
   updateEmailSubject();
+  updateFloatingSubmit();
 });
-
-  
-  </script>
+</script>
