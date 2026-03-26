@@ -872,7 +872,43 @@
     text-transform: uppercase;
     letter-spacing: 0.2px;
 }
+.selected-item-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+}
 
+.selected-item-remove {
+    background: #fff;
+    color: #d64541;
+    border: 1px solid #d64541;
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-size: 0.8em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+}
+
+.selected-item-remove:hover {
+    background: #d64541;
+    color: #fff;
+}
+
+@media (max-width: 767px) {
+    .selected-item-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .selected-item-remove {
+        width: 100%;
+        text-align: center;
+    }
+}
 .form-actions {
     display: flex;
     gap: 18px;
@@ -942,4 +978,23 @@
     display: grid !important;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)) !important;
     gap: 14px !important;
+}
+.category-title {
+    color: #ffffff !important;
+    background: linear-gradient(135deg, #5a2370 0%, #3f184f 100%) !important;
+    border-left: 5px solid #2d1038 !important;
+}
+
+/* opcional: se quiser o "Selected Products for Quote" também em roxo */
+.selected-products {
+    border: 2px solid #6f2c91 !important;
+    background: linear-gradient(135deg, #f7f1fb 0%, #fcf9fe 100%) !important;
+}
+
+.selected-products h3 {
+    color: #4b1d5a !important;
+}
+
+.selected-item {
+    border-left: 5px solid #6f2c91 !important;
 }
