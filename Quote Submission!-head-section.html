@@ -1,218 +1,737 @@
-<!-- *** ADD OR EDIT HTML INSIDE OF THE dmRespCol DIVS, SEE DOCUMENTATION FOR GUIDELINES *** -->
-<div dm:templateorder="170" class="dmHomeRespTmpl mainBorder dmRespRowsWrapper dmFullRowRespTmpl" id="1716942098">
- <div class="u_1895415455 dmRespRow fullBleedChanged fullBleedMode hasBackgroundOverlay" id="1895415455">
-  <div class="dmRespColsWrapper" id="1291440241">
-   <div class="dmRespCol empty-column large-12 medium-12 small-12" id="1657166251">
-    <!-- *** INSERT YOUR HTML BELOW *** -->
-    <div class="u_1345097190 dmRespRow fullBleedChanged fullBleedMode" id="1345097190">
-     <div class="dmRespColsWrapper" id="1653803745">
-      <div class="u_1580557343 dmRespCol empty-column small-12 medium-12 large-12" id="1580557343">
-       <!-- *** INSERT YOUR HTML BELOW *** -->
-       <div class="u_1057009216 dmNewParagraph" data-dmtmpl="true" data-element-type="paragraph" data-version="5" id="1057009216" style="transition: none; text-align: left; display: block;" data-uialign="center">
-        <h1 class="text-align-center">
-         <span style="color: rgb(255, 255, 255); display: unset;" no_space_b="true" no_space_e="true">
-          Quote Submission
-         </span>
-        </h1>
-        <h5 class="text-align-center" style="">
-         <span style="display: initial; color: var(--color_3);" no_space_b="true" no_space_e="true">
-          Request a quote for our Fruits Powders and Botanicals Extracts
-         </span>
-        </h5>
-       </div>
+
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="quote submission.css"/>
+  <link rel="stylesheet" href="quote submission-desktop-tablet.css"/>
+  <link rel="stylesheet" href="quote submission-mobile.css"/>
+  <script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  const products = {
+    freezeDried: [
+      "Acai Freeze Dried Powder","Acerola Freeze Dried Powder","Apple Freeze Dried Powder","Aronia Freeze Dried Powder",
+      "Banana Freeze Dried Powder","Beetroot Freeze Dried Powder","Blackberry Freeze Dried Powder","Blackcurrant Freeze Dried Powder",
+      "Blueberry Freeze Dried Powder","Brocolli Freeze Dried Powder","Cranberry Freeze Dried Powder","Dragon Fruit (Pitaya) Freeze Dried Powder",
+      "Elderberry Freeze Dried Powder","Goosberry Freeze Dried Powder","Kale Freeze Dried Powder","Lemon Freeze Dried Powder",
+      "Maquiberry Freeze Dried Powder","Mango Freeze Dried Powder","Moringa Air Dried Powder","Peach Freeze Dried Powder",
+      "Peas Freeze Dried Powder","Pineapple Freeze Dried Powder","Raspberry Freeze Dried Powder","Red Currant Freeze Dried Powder",
+      "Spinach Freeze Dried Powder","Strawberry Freeze Dried Powder","Sweet Corn Freeze Dried Powder"
+    ],
+    sprayDried: [
+      "Acai Spray Dried Powder","Acerola Spray Dried Powder 17% Vit C","Acerola Spray Dried Powder 25% Vit C",
+      "Apple Spray Dried Powder","Banana Spray Dried Powder","Beet Spray Dried Powder","Blackberry Spray Dried Powder",
+      "Blueberry Spray Dried Powder","Broccoli Spray Dried Powder","Cabbage Spray Dried Powder","Camu Camu Spray Dried Powder",
+      "Camu Camu Spray Dried Powder 12% Vit C","Camu Camu Spray Dried Powder 20% Vit C","Camu Camu Spray Dried Powder 3% Vit C",
+      "Carrot Spray Dried Powder","Cashew Spray Dried Powder","Coconut Milk Cream Spray Dried Powder","Cupuaçu Spray Dried Powder",
+      "Dragon Fruit Spray Dried Powder (Pitaya)","Elderberry Spray Dried Powder","Grape Spray Dried Powder","Graviola Spray Dried Powder",
+      "Green Tea Spray Dried Powder","Guarana 10% Natural Caffeine Spray Dried Powder","Guarana 2% Natural Caffeine Spray Dried Powder",
+      "Guarana 22% Natural Caffeine Spray Dried Powder","Guarana 5% Natural Caffeine Spray Dried Powder","Guava Spray Dried Powder",
+      "Jabuticaba Spray Dried Powder","Lemon Spray Dried Powder","Mango Spray Dried Powder","Melon Spray Dried Powder",
+      "Orange Spray Dried Powder","Papaya Spray Dried Powder","Passion Fruit Spray Dried Powder","Peach Spray Dried Powder",
+      "Pear Spray Dried Powder","Pineapple Spray Dried Powder","Raspberry Spray Dried Powder","Spinach Spray Dried Powder",
+      "Strawberry Spray Dried Powder","Tamarindo Spray Dried Powder","Tangerine Spray Dried Powder","Tomato Spray Dried Powder",
+      "Watercrest Spray Dried Powder","Watermelon Spray Dried Powder","Yacon Spray Dried Powder",
+      "Yerba Mate Soluble Dry Extract","Yerba Mate Soluble Dry Extract 8% Caffeine","Yerba Mate Toasted Soluble Dry Extract"
+    ],
+    otherDry: [
+      "Camu Camu Powder 12% Vit C (95% Pure) Air Dried",
+      "Camu Camu Powder 5% Vit C (100% Pure) Fluidized Bed Drying",
+      "Camu Camu Powder 8% Vit C (100% Pure) Air Dried",
+      "Graviola Leaf Powder (Soursop) Sundried and OSS",
+      "Moringa Air Dried Powder",
+      "Sugar Beet Powder"
+    ],
+    juice: [
+      "Acai Juice Powder","Acerola Juice Powder","Apple Juice Powder","Banana Juice Powder","Beet Juice Powder",
+      "Blackberry Juice Powder","Blueberry Juice Powder","Broccoli Juice Powder","Cabbage Juice Powder","Carrot Juice Powder",
+      "Cupuaçu Juice Powder","Dragon Fruit Juice Powder","Eggplant Juice Powder","Grape Juice Powder","Graviola Juice Powder",
+      "Guava Juice Powder","Lime Juice Powder","Mango Juice Powder","Melon Juice Powder","Orange Juice Powder",
+      "Papaya Juice Powder","Passion Fruit Juice Powder","Peach Juice Powder","Pear Juice Powder",
+      "Pineapple Juice Powder","Raspberry Juice Powder","Spinach Juice Powder","Tomato Juice Powder"
+    ],
+    inclusions: [
+      "Acai Cubes and Bits","Acerola Cubes and Bits","Apple Cubes and Bits","Banana Cubes and Bits","Blackberry Cubes and Bits",
+      "Blueberry Cubes and Bits","Lime Cubes and Bits","Mango Cubes and Bits","Orange Cubes and Bits",
+      "Passion Fruit Cubes and Bits","Pineapple Cubes and Bits","Raspberry Cubes and Bits","Strawberry Cubes and Bits"
+    ]
+  };
+
+  const selectedProducts = {};
+  const selectedProductsContainer = document.getElementById('selectedProductsContainer');
+  const selectedProductsList = document.getElementById('selectedProductsList');
+  const productsDataInput = document.getElementById('dmform-5');
+  const form = document.getElementById('1624702506');
+
+  const subjectInput = document.getElementById('dmformsubject');
+  const companyInput = document.getElementById('dmform-1');
+
+  function updateEmailSubject() {
+    if (!subjectInput) return;
+
+    const company = companyInput ? companyInput.value.trim() : '';
+
+    if (company) {
+      const newSubject = `Quote Submission - ${company}`;
+      subjectInput.value = newSubject;
+      subjectInput.setAttribute('data-email-subject', newSubject);
+    } else {
+      subjectInput.value = 'Quote Submission';
+      subjectInput.setAttribute('data-email-subject', 'Quote Submission');
+    }
+  }
+
+  function renderProducts() {
+    renderProductCategory('freezeDriedList', products.freezeDried);
+    renderProductCategory('sprayDriedList', products.sprayDried);
+    renderProductCategory('otherDryList', products.otherDry);
+    renderProductCategory('juiceList', products.juice);
+    renderProductCategory('inclusionsList', products.inclusions);
+    bindProductEvents();
+    
+        if (selectedProductsList) {
+      selectedProductsList.addEventListener('click', function (e) {
+        const removeBtn = e.target.closest('.selected-item-remove');
+        if (!removeBtn) return;
+    
+        const productId = removeBtn.dataset.productId;
+        if (!productId) return;
+    
+        delete selectedProducts[productId];
+    
+        const originalProductItem = document.querySelector(`.product-item[data-product-id="${productId}"]`);
+        if (originalProductItem) {
+          const addButton = originalProductItem.querySelector('.btn-add-product');
+          const removeButton = originalProductItem.querySelector('.btn-remove-product');
+    
+          if (addButton) addButton.style.display = 'inline-block';
+          if (removeButton) removeButton.style.display = 'none';
+        }
+    
+        renderSelectedProducts();
+      });
+    }
+  }
+
+  function renderProductCategory(elementId, productList) {
+    const container = document.getElementById(elementId);
+    if (!container) return;
+
+    container.innerHTML = '';
+
+    productList.forEach(function (productName, index) {
+      const productId = `${elementId}-${index}`;
+      const div = document.createElement('div');
+      div.className = 'product-item';
+      div.dataset.productId = productId;
+
+      div.innerHTML = `
+        <div class="product-name">${productName}</div>
+        <div class="product-fields">
+          <div class="product-field">
+            <label>Quote Request</label>
+            <div class="unit-group">
+              <input type="number" class="product-moq" placeholder="Amount" min="0" step="0.1">
+              <select class="product-moq-unit">
+                <option value="kg">KG</option>
+                <option value="lb">LB</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="product-field">
+            <label>Target Price</label>
+            <div class="unit-group">
+              <input type="number" class="product-price" placeholder="Price" min="0" step="0.01">
+              <select class="product-price-unit">
+                <option value="kg">KG</option>
+                <option value="lb">LB</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="product-field">
+            <label>Annual Qty</label>
+            <div class="unit-group">
+              <input type="number" class="product-annual" placeholder="Amount" min="0" step="0.1">
+              <select class="product-annual-unit">
+                <option value="kg">KG</option>
+                <option value="lb">LB</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="product-field">
+            <label>Sample</label>
+            <select class="product-sample">
+              <option value="no">No</option>
+              <option value="yes">Yes</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="btn-group">
+          <button type="button" class="btn-add-product" data-product-id="${productId}" data-product-name="${productName}">Add to Quote</button>
+          <button type="button" class="btn-remove-product" data-product-id="${productId}" style="display:none;">Remove</button>
+        </div>
+      `;
+
+      container.appendChild(div);
+    });
+  }
+
+  function getProductItem(button) {
+    return button.closest('.product-item');
+  }
+
+  function normalizeValue(value) {
+    return value && String(value).trim() !== '' ? String(value).trim() : '';
+  }
+
+  function getProductData(productItem, button) {
+    const quantity = normalizeValue(productItem.querySelector('.product-moq')?.value);
+    const quantityUnit = normalizeValue(productItem.querySelector('.product-moq-unit')?.value).toLowerCase();
+    const targetPrice = normalizeValue(productItem.querySelector('.product-price')?.value);
+    const priceUnit = normalizeValue(productItem.querySelector('.product-price-unit')?.value).toLowerCase();
+    const annualQty = normalizeValue(productItem.querySelector('.product-annual')?.value);
+    const annualUnit = normalizeValue(productItem.querySelector('.product-annual-unit')?.value).toLowerCase();
+    const sample = normalizeValue(productItem.querySelector('.product-sample')?.value).toLowerCase() || 'no';
+
+    return {
+      id: button.dataset.productId || '',
+      name: button.dataset.productName || '',
+      quantity: quantity || '-',
+      quantityUnit: quantity ? quantityUnit : '',
+      targetPrice: targetPrice || '-',
+      priceUnit: targetPrice ? priceUnit : '',
+      annualQty: annualQty || '-',
+      annualUnit: annualQty ? annualUnit : '',
+      sample: sample || 'no'
+    };
+  }
+
+  function renderSelectedProducts() {
+    const productsArray = Object.values(selectedProducts);
+
+    if (!productsArray.length) {
+      if (selectedProductsContainer) selectedProductsContainer.style.display = 'none';
+      if (selectedProductsList) selectedProductsList.innerHTML = '';
+      if (productsDataInput) productsDataInput.value = '';
+      return;
+    }
+
+    if (selectedProductsContainer) selectedProductsContainer.style.display = 'block';
+
+   if (selectedProductsList) {
+  selectedProductsList.innerHTML = productsArray.map(function (product) {
+    return `
+      <div class="selected-item">
+        <div class="selected-item-header">
+          <div class="selected-item-name">${product.name}</div>
+          <button
+            type="button"
+            class="selected-item-remove"
+            data-product-id="${product.id}"
+          >
+            Remove
+          </button>
+        </div>
+
+        <div class="selected-item-details">
+          <div class="selected-item-detail">
+            <strong>Quote Request:</strong>
+            ${product.quantity}${product.quantityUnit ? ' ' + product.quantityUnit : ''}
+          </div>
+
+          <div class="selected-item-detail">
+            <strong>Target Price:</strong>
+            ${product.targetPrice === '-' ? '-' : `$${product.targetPrice}/${product.priceUnit}`}
+          </div>
+
+          <div class="selected-item-detail">
+            <strong>Annual Qty:</strong>
+            ${product.annualQty === '-' ? '-' : `${product.annualQty} ${product.annualUnit}`}
+          </div>
+
+          <div class="selected-item-detail">
+            <strong>Sample:</strong>
+            ${product.sample === 'yes' ? 'Yes' : 'No'}
+          </div>
+        </div>
       </div>
-     </div>
-    </div>
-    <div class="u_1788578650 dmRespRow" id="1788578650">
-     <div class="dmRespColsWrapper" id="1837198783">
-      <div class="dmRespCol empty-column large-12 medium-12 small-12" id="1605762622">
-       <!-- *** INSERT YOUR HTML BELOW *** -->
-       <div dmle_widget="spacer" data-element-type="spacer" class="dmSpacer u_1363856206" id="1363856206">
-       </div>
-      </div>
-     </div>
-    </div>
-   </div>
-  </div>
- </div>
- <div class="dmRespRow u_1002824703" id="1002824703">
-  <div class="dmRespColsWrapper" id="1267657884">
-   <div class="dmRespCol empty-column large-12 medium-12 small-12" id="1014288157">
-    <!-- *** INSERT YOUR HTML BELOW *** -->
-    <div dmle_widget="spacer" data-element-type="spacer" class="dmSpacer" id="1598025326">
-    </div>
-    <div class="dmform default native-inputs required-asterisk u_1627402986" dmle_widget="dudaContactUsRespId" data-element-type="dContactUsRespId" captcha="true" data-require-captcha="true" data-captcha-position="bottomleft" id="1627402986">
-     <h3 class="dmform-title dmwidget-title" id="1421576333" hide="true">
-     </h3>
-     <div class="dmform-wrapper" id="1388434014">
-      <form method="post" class="dmRespDesignRow" locale="ENGLISH" id="1624702506">
-       <div class="spacing-container" id="1181016400">
-        <div class="dmforminput required small-12 medium-6 large-6 dmRespDesignCol" id="field-name">
-         <label for="dmform-0" id="1239193553">
-          Name
-         </label>
-         <input type="text" name="dmform-0" id="dmform-0"/>
-         <input type="hidden" name="label-dmform-0" value="Name" id="1165169951" class=""/>
-        </div>
-        <div class="dmforminput required small-12 medium-6 large-6 dmRespDesignCol" id="field-company">
-         <label for="dmform-1" id="1543852653">
-          Company Name
-         </label>
-         <input type="text" name="dmform-1" id="dmform-1"/>
-         <input type="hidden" name="label-dmform-1" value="Company Name" id="1197585534" class=""/>
-        </div>
-        <div class="dmforminput required small-12 medium-6 large-6 dmRespDesignCol" id="field-email">
-         <label for="dmform-2" id="1030292206">
-          Email Address
-         </label>
-         <input type="email" name="dmform-2" id="dmform-2"/>
-         <input type="hidden" name="label-dmform-2" value="Email Address" id="1249608376" class=""/>
-        </div>
-        <div class="dmforminput small-12 medium-6 large-6 dmRespDesignCol" id="field-phone">
-         <label for="dmform-3" id="1463257635">
-          Phone Number
-         </label>
-         <input type="tel" name="dmform-3" id="dmform-3"/>
-         <input type="hidden" name="label-dmform-3" value="Phone Number" id="1922531800"/>
-        </div>
-        <div class="dmforminput small-12 medium-12 large-12 dmRespDesignCol" id="field-notes">
-         <label for="dmform-4" id="1418130409">
-          Additional Notes
-         </label>
-         <textarea name="dmform-4" id="dmform-4">
-         </textarea>
-         <input type="hidden" name="label-dmform-4" value="Additional Notes" id="1575143252"/>
-        </div>
-        <div class="dmforminput small-12 medium-12 large-12 dmRespDesignCol" id="field-productsdata" style="display:none;">
-         <label for="dmform-5" id="1326383685">
-          Selected Products
-         </label>
-         <textarea name="dmform-5" id="dmform-5">
-         </textarea>
-         <input type="hidden" name="label-dmform-5" value="Selected Products" id="1932900989"/>
-        </div>
-       </div>
-       <div class="form-section" id="1334990580">
-        <h2 style="text-align: center;" id="1090054539">
-         Select Products
-        </h2>
-        <p style="text-align: center;" id="1103354309">
-         Choose products and specify Quote Request, Target Price, Annual Qty and Sample needs.
-        </p>
-        <div class="process-filter-wrap ingredient-filter-wrap">
-         <label for="botanicalFilter">
-          Filter by ingredient type
-         </label>
-         <select id="botanicalFilter">
-          <option value="all">
-           All Ingredients
-          </option>
-          <option value="fruit">
-           Fruits
-          </option>
-          <option value="vegetable">
-           Vegetables
-          </option>
-          <option value="herb">
-           Herbs
-          </option>
-         </select>
-        </div>
-        <div class="process-filter-wrap">
-         <label for="processFilter">
-          Filter by process
-         </label>
-         <select id="processFilter">
-          <option value="all">
-           All Products
-          </option>
-          <option value="freeze">
-           Freeze Dried
-          </option>
-          <option value="spray-extract">
-           Spray Dried Extract
-          </option>
-          <option value="other-dry">
-           Other / New Dry Processes
-          </option>
-          <option value="juice">
-           Spray Dried Juice 2:1
-          </option>
-          <option value="inclusions">
-           Fruit Inclusions
-          </option>
-         </select>
-        </div>
-        <div class="category" id="1098245227" data-process="freeze">
-         <div class="category-title" style="text-align: center;" id="1373703353">
-          FREEZE DRIED POWDERS (100% Pure Powders)
-         </div>
-         <div class="product-list" id="freezeDriedList">
-         </div>
-        </div>
-        <div class="category" id="1337599647" data-process="spray-extract">
-         <div class="category-title" style="text-align: center;" id="1611572364">
-          SPRAY DRIED EXTRACT POWDERS (NMT 20% Carrier)
-         </div>
-         <div class="product-list" id="sprayDriedList">
-         </div>
-        </div>
-        <div class="category" id="1876078605" data-process="other-dry">
-         <div class="category-title" style="text-align: center;" id="1712371731">
-          OTHER AND NEW DRY PROCESSES
-         </div>
-         <div class="product-list" id="otherDryList">
-         </div>
-        </div>
-        <div class="category" id="1956110508" data-process="juice">
-         <div class="category-title" style="text-align: center;" id="1767266647">
-          SPRAY DRIED JUICE POWDERS 2:1
-         </div>
-         <div class="product-list" id="juiceList">
-         </div>
-        </div>
-        <div class="category" id="1999964998" data-process="inclusions">
-         <div class="category-title" style="text-align: center;" id="1053113800">
-          FRUIT INCLUSIONS
-         </div>
-         <div class="product-list" id="inclusionsList">
-         </div>
-        </div>
-       </div>
-       <div class="selected-products" id="selectedProductsContainer" style="display:none;">
-        <h3 id="1577271954">
-         Selected Products for Quote
-        </h3>
-        <div id="selectedProductsList">
-        </div>
-       </div>
-       <div class="dmformsubmit dmWidget R" id="1032578054">
-        <input name="submit" type="submit" value="Submit Quote Request" id="1088019194"/>
-       </div>
-       <input name="dmformsendto" type="hidden" value="sales@newacaiamazonas.com" id="1176337140" class=""/>
-       <input class="dmActionInput" type="hidden" name="action" value="/_dm/s/rt/widgets/dmform.submit.jsp" id="1844836270"/>
-       <input name="dmformfrom" type="hidden" preserve_css="true" id="1685896152" class="" value="New Acai Amazonas"/>
-       <input name="dmformsubject" type="hidden" id="dmformsubject" class="" value="Quote Submission" data-email-subject="Quote Submission"/>
-       <input name="dmformfrom" type="hidden" value="Engage" id="1055039255"/>
-       <input name="dmformautoreplyenabled" type="hidden" value="true" id="1001642411"/>
-       <input name="dmformautoreplyfrom" type="hidden" value="New Acai Amazonas" id="1055719773" class=""/>
-       <input name="dmformautoreplysubject" type="hidden" value="Thank you for your submission" id="1110519054"/>
-       <input name="dmformautoreplymsg" type="hidden" value="V2UndmUgcmVjZWl2ZWQgeW91ciBxdW90ZSByZXF1ZXN0IC0gdGhhbmsgeW91LiBPbmUgb2Ygb3VyIHRlYW0gbWVtYmVycyB3aWxsIGdldCBiYWNrIHRvIHlvdSBzb29uLg==" id="1153979392"/>
-       <input name="dmformautoreplyincludeformcopy" type="hidden" value="true" id="1714020830"/>
-      </form>
-     </div>
-     <div class="dmform-success" style="display:none" id="1319203191">
-      Thank you for contacting us.
-      <br id="1500920289"/>
-      We will get back to you as soon as possible.
-     </div>
-     <div class="dmform-error" style="display:none" id="1845469927">
-      Oops, there was an error sending your message.
-      <br id="1801080576"/>
-      Please try again later.
-     </div>
-    </div>
-   </div>
-  </div>
- </div>
-</div>
+    `;
+  }).join('');
+}
+
+    if (productsDataInput) {
+      productsDataInput.value = '\n' + productsArray.map(function (product, index) {
+        const lines = [
+          `Name: ${product.name}`,
+          `Quote Request: ${product.quantity}${product.quantityUnit ? ' ' + product.quantityUnit : ''}`
+        ];
+
+        if (product.targetPrice !== '-') {
+          lines.push(`Target Price: $${product.targetPrice}/${product.priceUnit}`);
+        }
+
+        if (product.annualQty !== '-') {
+          lines.push(`Annual Qty: ${product.annualQty} ${product.annualUnit}`);
+        }
+
+        lines.push(`Sample: ${product.sample === 'yes' ? 'Yes' : 'No'}`);
+        lines.push('------------------------------');
+
+        return lines.join('\n');
+      }).join('\n\n');
+    }
+  }
+
+  function addProduct(button) {
+    const productItem = getProductItem(button);
+    if (!productItem) return;
+
+    const removeButton = productItem.querySelector('.btn-remove-product');
+    const data = getProductData(productItem, button);
+
+    if (!data.quantity || data.quantity === '-') {
+      alert('Please fill in the Quote Request field.');
+      return;
+    }
+
+    selectedProducts[data.id] = data;
+    button.style.display = 'none';
+    if (removeButton) removeButton.style.display = 'inline-block';
+
+    renderSelectedProducts();
+  }
+
+  function removeProduct(button) {
+    const productItem = getProductItem(button);
+    if (!productItem) return;
+
+    const addButton = productItem.querySelector('.btn-add-product');
+    const productId = button.dataset.productId;
+
+    delete selectedProducts[productId];
+    button.style.display = 'none';
+    if (addButton) addButton.style.display = 'inline-block';
+
+    renderSelectedProducts();
+  }
+
+  function attachLiveUpdate(productItem) {
+    const addButton = productItem.querySelector('.btn-add-product');
+    const productId = addButton ? addButton.dataset.productId : null;
+    const fields = productItem.querySelectorAll('input, select, textarea');
+
+    fields.forEach(function (field) {
+      field.addEventListener('input', function () {
+        if (productId && selectedProducts[productId] && addButton) {
+          selectedProducts[productId] = getProductData(productItem, addButton);
+          renderSelectedProducts();
+        }
+      });
+
+      field.addEventListener('change', function () {
+        if (productId && selectedProducts[productId] && addButton) {
+          selectedProducts[productId] = getProductData(productItem, addButton);
+          renderSelectedProducts();
+        }
+      });
+    });
+  }
+
+  function bindProductEvents() {
+    document.querySelectorAll('.btn-add-product').forEach(function (button) {
+      button.addEventListener('click', function () {
+        addProduct(this);
+      });
+    });
+
+    document.querySelectorAll('.btn-remove-product').forEach(function (button) {
+      button.addEventListener('click', function () {
+        removeProduct(this);
+      });
+    });
+
+    document.querySelectorAll('.product-item').forEach(function (productItem) {
+      attachLiveUpdate(productItem);
+    });
+  }
+
+  if (companyInput) {
+    companyInput.addEventListener('input', updateEmailSubject);
+    companyInput.addEventListener('change', updateEmailSubject);
+  }
+
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      updateEmailSubject();
+      renderSelectedProducts();
+
+      if (!Object.keys(selectedProducts).length) {
+        e.preventDefault();
+        alert('Please add at least one product to the quote.');
+        return;
+      }
+
+      if (productsDataInput && !productsDataInput.value.trim()) {
+        e.preventDefault();
+        alert('Please add at least one product to the quote.');
+      }
+    });
+
+    form.addEventListener('reset', function () {
+      setTimeout(function () {
+        Object.keys(selectedProducts).forEach(function (key) {
+          delete selectedProducts[key];
+        });
+
+        document.querySelectorAll('.btn-add-product').forEach(function (btn) {
+          btn.style.display = 'inline-block';
+        });
+
+        document.querySelectorAll('.btn-remove-product').forEach(function (btn) {
+          btn.style.display = 'none';
+        });
+
+        renderSelectedProducts();
+        updateEmailSubject();
+      }, 0);
+    });
+  }
+
+  renderProducts();
+  renderSelectedProducts();
+  updateEmailSubject();
+});
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  </script>
+  <script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("1624702506");
+  const realWrap = document.getElementById("1032578054");
+  const realButton = realWrap ? realWrap.querySelector('input[type="submit"]') : null;
+
+  if (!form || !realWrap || !realButton) return;
+
+  const floatingWrap = document.createElement("div");
+  floatingWrap.id = "floatingQuoteSubmit";
+
+  const floatingButton = document.createElement("button");
+  floatingButton.type = "button";
+  floatingButton.textContent = realButton.value || "Submit Quote Request";
+
+  floatingWrap.appendChild(floatingButton);
+  document.body.appendChild(floatingWrap);
+
+  floatingButton.addEventListener("click", function () {
+    realButton.click();
+  });
+
+  function updateFloatingButton() {
+    const formRect = form.getBoundingClientRect();
+    const realRect = realWrap.getBoundingClientRect();
+
+    const formStarted = formRect.top < window.innerHeight * 0.8;
+    const formStillActive = formRect.bottom > 140;
+
+    const realButtonAlreadyVisible =
+      realRect.top < window.innerHeight - 120;
+
+    if (formStarted && formStillActive && !realButtonAlreadyVisible) {
+      floatingWrap.classList.add("is-visible");
+    } else {
+      floatingWrap.classList.remove("is-visible");
+    }
+  }
+
+  window.addEventListener("scroll", updateFloatingButton, { passive: true });
+  window.addEventListener("resize", updateFloatingButton);
+  updateFloatingButton();
+});
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  </script>
+  <script>
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const filter = document.getElementById("processFilter");
+  const categories = document.querySelectorAll(".category[data-process]");
+
+  if (!filter || !categories.length) return;
+
+  function applyProcessFilter() {
+    const selected = filter.value;
+
+    categories.forEach(function (category) {
+      const process = category.getAttribute("data-process");
+
+      if (selected === "all" || process === selected) {
+        category.classList.remove("is-hidden");
+      } else {
+        category.classList.add("is-hidden");
+      }
+    });
+  }
+
+  filter.addEventListener("change", applyProcessFilter);
+  applyProcessFilter();
+});
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  </script>
+  <script>
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const section = document.getElementById("1334990580");
+  const filter = document.getElementById("botanicalSideFilter");
+
+  if (!section || !filter) return;
+
+  let currentBotanical = "all";
+
+  function normalizeText(text) {
+    return (text || "")
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .trim();
+  }
+
+  /* ajuste fino aqui se quiser classificar nomes exatos */
+  const botanicalOverrides = {
+    "acai": "fruit",
+    "acerola": "fruit",
+    "blackberry": "fruit",
+    "blueberry": "fruit",
+    "camu camu": "fruit",
+    "cranberry": "fruit",
+    "dragon fruit": "fruit",
+    "graviola": "fruit",
+    "guarana": "fruit",
+    "guava": "fruit",
+    "jabuticaba": "fruit",
+    "lemon": "fruit",
+    "lime": "fruit",
+    "mango": "fruit",
+    "orange": "fruit",
+    "papaya": "fruit",
+    "passion fruit": "fruit",
+    "pineapple": "fruit",
+    "raspberry": "fruit",
+    "strawberry": "fruit",
+    "soursop": "fruit",
+
+    "beet": "vegetable",
+    "broccoli": "vegetable",
+    "carrot": "vegetable",
+    "kale": "vegetable",
+    "pumpkin": "vegetable",
+    "spinach": "vegetable",
+    "sweet potato": "vegetable",
+    "tomato": "vegetable",
+
+    "basil": "herb",
+    "chamomile": "herb",
+    "ginger": "herb",
+    "hibiscus": "herb",
+    "maca": "herb",
+    "matcha": "herb",
+    "mint": "herb",
+    "moringa": "herb",
+    "oregano": "herb",
+    "parsley": "herb",
+    "rosemary": "herb",
+    "sage": "herb",
+    "thyme": "herb",
+    "turmeric": "herb",
+    "yerba mate": "herb"
+  };
+
+  const botanicalKeywords = {
+    fruit: [
+      "fruit", "berry", "acai", "acerola", "camu camu", "mango", "pineapple",
+      "orange", "lime", "lemon", "papaya", "banana", "guava", "graviola",
+      "soursop", "passion", "raspberry", "blueberry", "blackberry",
+      "strawberry", "cranberry", "jabuticaba"
+    ],
+    vegetable: [
+      "vegetable", "beet", "carrot", "kale", "spinach", "broccoli",
+      "pumpkin", "sweet potato", "tomato", "cucumber", "celery"
+    ],
+    herb: [
+      "herb", "botanical", "moringa", "guarana", "maca", "ginger", "turmeric",
+      "mint", "basil", "rosemary", "sage", "oregano", "thyme", "matcha",
+      "green tea", "yerba mate", "hibiscus", "chamomile", "parsley"
+    ]
+  };
+
+  function getBotanicalType(productName) {
+    const normalized = normalizeText(productName);
+
+    for (const key in botanicalOverrides) {
+      if (normalized.includes(key)) return botanicalOverrides[key];
+    }
+
+    for (const type in botanicalKeywords) {
+      const found = botanicalKeywords[type].some(function (keyword) {
+        return normalized.includes(keyword);
+      });
+      if (found) return type;
+    }
+
+    return "unmapped";
+  }
+
+  function classifyProducts() {
+    section.querySelectorAll(".product-item").forEach(function (item) {
+      const nameEl = item.querySelector(".product-name");
+      if (!nameEl) return;
+
+      const productName = nameEl.textContent || "";
+      item.setAttribute("data-botanical", getBotanicalType(productName));
+    });
+  }
+
+  function applyBotanicalFilter() {
+    section.querySelectorAll(".category").forEach(function (category) {
+      const items = category.querySelectorAll(".product-item");
+      let visibleCount = 0;
+
+      items.forEach(function (item) {
+        const type = item.getAttribute("data-botanical") || "unmapped";
+        const shouldShow = currentBotanical === "all" || type === currentBotanical;
+
+        item.classList.toggle("botanical-item-hidden", !shouldShow);
+
+        if (shouldShow) visibleCount++;
+      });
+
+      if (items.length > 0) {
+        category.classList.toggle("botanical-hidden", visibleCount === 0);
+      }
+    });
+  }
+
+  filter.querySelectorAll("button[data-botanical]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      currentBotanical = this.getAttribute("data-botanical");
+
+      filter.querySelectorAll("button").forEach(function (btn) {
+        btn.classList.remove("is-active");
+      });
+
+      this.classList.add("is-active");
+      applyBotanicalFilter();
+    });
+  });
+
+  /* importante: observa quando os produtos são renderizados dinamicamente */
+  const observer = new MutationObserver(function () {
+    classifyProducts();
+    applyBotanicalFilter();
+  });
+
+  observer.observe(section, {
+    childList: true,
+    subtree: true
+  });
+
+  classifyProducts();
+  applyBotanicalFilter();
+});
+
+
+  
+
+  
+
+  
+
+  </script>
