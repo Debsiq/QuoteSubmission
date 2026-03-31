@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Acai Amazonas | V2 Quote Request Campaign</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #efedf4;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #241c33;
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+      width: 100%;
+    }
+    td { padding: 0; }
+    .wrapper {
+      width: 100%;
+      table-layout: fixed;
+      background: #efedf4;
+      padding: 28px 0;
+    }
+    .main {
+      width: 100%;
+      max-width: 640px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 18px 50px rgba(30, 15, 50, 0.10);
+    }
+    .topbar {
+      background: #1f0d35;
+      padding: 14px 26px;
+      text-align: center;
+      font-size: 12px;
+      line-height: 18px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #cbbfe0;
+    }
+    .hero {
+      background: linear-gradient(180deg, #fffaf3 0%, #f9f4ff 100%);
+      padding: 34px 34px 28px;
+      border-bottom: 1px solid #eee6f7;
+    }
+    .brand-row {
+      width: 100%;
+      margin-bottom: 26px;
+    }
+    .brand-left {
+      font-size: 25px;
+      line-height: 30px;
+      font-weight: 700;
+      color: #2b1243;
+      letter-spacing: 0.2px;
+    }
+    .brand-right {
+      font-size: 11px;
+      line-height: 18px;
+      color: #7b6d92;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      text-align: right;
+    }
+    .hero-grid {
+      width: 100%;
+    }
+    .hero-copy {
+      width: 58%;
+      vertical-align: top;
+      padding-right: 18px;
+    }
+    .hero-panel {
+      width: 42%;
+      vertical-align: top;
+    }
+    .kicker {
+      display: inline-block;
+      background: #2ecc71;
+      color: #ffffff;
+      font-size: 12px;
+      line-height: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      margin: 0;
+      font-size: 40px;
+      line-height: 44px;
+      color: #24113a;
+      letter-spacing: -0.7px;
+    }
+    .hero p {
+      margin: 16px 0 0;
+      font-size: 17px;
+      line-height: 27px;
+      color: #5d5370;
+      max-width: 96%;
+    }
+    .hero p strong {
+      color: #24113a;
+    }
+    .mini-card {
+      background: linear-gradient(135deg, #2b1243 0%, #4b2570 100%);
+      border-radius: 20px;
+      padding: 22px 20px;
+      color: #ffffff;
+      box-shadow: 0 14px 30px rgba(43, 18, 67, 0.20);
+    }
+    .mini-label {
+      font-size: 11px;
+      line-height: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      color: #baf0cd;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+    .mini-big {
+      font-size: 29px;
+      line-height: 32px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .mini-text {
+      font-size: 14px;
+      line-height: 22px;
+      color: #ece4f7;
+    }
+    .section {
+      padding: 34px;
+    }
+    .split-intro {
+      width: 100%;
+    }
+    .split-left {
+      width: 58%;
+      vertical-align: top;
+      padding-right: 18px;
+    }
+    .split-right {
+      width: 42%;
+      vertical-align: top;
+    }
+    .eyebrow {
+      font-size: 12px;
+      line-height: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      color: #8b7fa1;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-size: 28px;
+      line-height: 34px;
+      color: #25133c;
+      font-weight: 700;
+      letter-spacing: -0.4px;
+      margin: 0 0 12px;
+    }
+    .section-copy {
+      font-size: 16px;
+      line-height: 26px;
+      color: #605474;
+      margin: 0;
+    }
+    .stat-box {
+      background: #fff7ea;
+      border: 1px solid #f6dfaf;
+      border-radius: 18px;
+      padding: 22px 20px;
+    }
+    .stat-box .stat-title {
+      font-size: 13px;
+      line-height: 18px;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      color: #9c7a2a;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .stat-box .stat-main {
+      font-size: 24px;
+      line-height: 28px;
+      color: #3a2457;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .stat-box .stat-copy {
+      font-size: 14px;
+      line-height: 22px;
+      color: #6a5d5c;
+    }
+    .process-wrap {
+      background: #faf8fd;
+      border-top: 1px solid #eee7f5;
+      border-bottom: 1px solid #eee7f5;
+      padding: 34px 26px;
+    }
+    .process-title {
+      font-size: 13px;
+      line-height: 18px;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      color: #8d80a2;
+      font-weight: 700;
+      margin-bottom: 18px;
+      text-align: center;
+    }
+    .form-preview-wrap {
+      padding: 4px 0 26px;
+    }
+    .form-preview {
+      background: #f3f3f3;
+      border: 1px solid #dbd8de;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 22px rgba(38, 24, 57, 0.05);
+    }
+    .form-row {
+      width: 100%;
+    }
+    .product-cell {
+      width: 33%;
+      vertical-align: middle;
+      padding: 20px 18px;
+      background: #f1f1f1;
+      border-right: 1px solid #dfdbe3;
+    }
+    .product-name {
+      font-size: 15px;
+      line-height: 22px;
+      font-weight: 700;
+      color: #2f5b34;
+    }
+    .fields-cell {
+      width: 67%;
+      padding: 14px 14px 14px 10px;
+      background: #f8f8f8;
+    }
+    .mini-fields {
+      width: 100%;
+    }
+    .mini-field {
+      vertical-align: top;
+      padding: 0 6px;
+    }
+    .mini-label-ui {
+      font-size: 10px;
+      line-height: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #736a7f;
+      font-weight: 700;
+      margin: 0 0 8px;
+      white-space: nowrap;
+    }
+    .input-box, .select-box {
+      background: #dddddd;
+      border-radius: 6px;
+      height: 38px;
+      padding: 0 12px;
+      font-size: 13px;
+      line-height: 38px;
+      color: #676767;
+      font-weight: 700;
+      text-align: left;
+      border: 1px solid #d6d2d8;
+    }
+    .select-box {
+      background: #efefef;
+      position: relative;
+      padding-right: 28px;
+    }
+    .select-box:after {
+      content: '▼';
+      position: absolute;
+      right: 10px;
+      top: 0;
+      font-size: 10px;
+      color: #56505d;
+    }
+    .quote-btn-cell {
+      width: 17%;
+      vertical-align: bottom;
+      padding: 0 6px;
+    }
+    .quote-btn-preview {
+      display: block;
+      background: #2f6a37;
+      color: #ffffff;
+      text-align: center;
+      border-radius: 8px;
+      font-size: 13px;
+      line-height: 18px;
+      font-weight: 700;
+      padding: 10px 8px;
+      min-height: 38px;
+    }
+    .preview-caption {
+      margin-top: 10px;
+      font-size: 12px;
+      line-height: 19px;
+      color: #7a6f90;
+      text-align: center;
+    }
+    .timeline {
+      width: 100%;
+    }
+    .timeline-step {
+      width: 25%;
+      vertical-align: top;
+      padding: 0 8px;
+    }
+    .step-shell {
+      background: #ffffff;
+      border: 1px solid #ebe3f4;
+      border-radius: 18px;
+      padding: 18px 14px;
+      text-align: center;
+      height: 100%;
+      box-shadow: 0 6px 18px rgba(46, 20, 76, 0.04);
+    }
+    .step-no {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background: #2b1243;
+      color: #ffffff;
+      font-size: 16px;
+      line-height: 40px;
+      font-weight: 700;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+    .step-title {
+      font-size: 15px;
+      line-height: 20px;
+      color: #2b1243;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .step-copy {
+      font-size: 13px;
+      line-height: 21px;
+      color: #6b607f;
+    }
+    .cta-band {
+      background: linear-gradient(135deg, #2b1243 0%, #1f0d35 100%);
+      padding: 34px 34px 36px;
+      text-align: center;
+      color: #ffffff;
+    }
+    .cta-band .cta-kicker {
+      font-size: 12px;
+      line-height: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1.6px;
+      color: #2ecc71;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .cta-band .cta-title {
+      font-size: 30px;
+      line-height: 36px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: -0.4px;
+    }
+    .cta-band .cta-copy {
+      font-size: 16px;
+      line-height: 25px;
+      color: #e8dff5;
+      margin: 0 auto 22px;
+      max-width: 470px;
+    }
+    .button {
+      display: inline-block;
+      background: linear-gradient(135deg, #f2a93b 0%, #ee8b24 100%);
+      color: #ffffff !important;
+      text-decoration: none;
+      font-size: 15px;
+      line-height: 15px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 17px 30px;
+      border-radius: 999px;
+      box-shadow: 0 12px 26px rgba(242, 169, 59, 0.26);
+    }
+    .cta-note {
+      margin-top: 14px;
+      font-size: 13px;
+      line-height: 20px;
+      color: #ccbfe0;
+    }
+    .reply-section {
+      padding: 30px 34px 10px;
+    }
+    .reply-card {
+      background: linear-gradient(135deg, #fdfbf7 0%, #f7f2fc 100%);
+      border: 1px solid #ede3f4;
+      border-radius: 18px;
+      padding: 22px 22px;
+    }
+    .reply-card strong {
+      color: #291440;
+    }
+    .reply-card p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 24px;
+      color: #615572;
+    }
+    .signature {
+      padding: 22px 34px 36px;
+      font-size: 15px;
+      line-height: 25px;
+      color: #605474;
+    }
+    .signature strong { color: #291440; }
+    .footer {
+      background: #f7f4fb;
+      border-top: 1px solid #ece4f4;
+      padding: 20px 28px 28px;
+      text-align: center;
+    }
+    .footer-brand {
+      font-size: 15px;
+      line-height: 22px;
+      color: #2b1243;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .footer-copy {
+      font-size: 12px;
+      line-height: 20px;
+      color: #7a6f90;
+    }
+    .footer a {
+      color: #2b1243;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    @media screen and (max-width: 640px) {
+      .main { border-radius: 0 !important; }
+      .hero, .section, .cta-band, .reply-section, .signature { padding-left: 20px !important; padding-right: 20px !important; }
+      .topbar, .footer { padding-left: 20px !important; padding-right: 20px !important; }
+      .hero-copy, .hero-panel, .split-left, .split-right, .timeline-step {
+        display: block !important;
+        width: 100% !important;
+        padding-right: 0 !important;
+      }
+      .hero-panel, .split-right { padding-top: 18px !important; }
+      .timeline-step { padding: 0 0 12px !important; }
+      .hero h1 { font-size: 30px !important; line-height: 34px !important; }
+      .section-title { font-size: 24px !important; line-height: 30px !important; }
+      .cta-band .cta-title { font-size: 26px !important; line-height: 31px !important; }
+    }
+  </style>
+</head>
+<body>
+  <center class="wrapper">
+    <table class="main" role="presentation" cellpadding="0" cellspacing="0">
+      <tr>
+        <td class="topbar">New Acai Amazonas | Website update for faster B2B quote requests</td>
+      </tr>
+
+      <tr>
+        <td class="hero">
+          <table class="brand-row" role="presentation" cellpadding="0" cellspacing="0">
+            <tr>
+              <td class="brand-left">🌿 NEW ACAI AMAZONAS</td>
+              <td class="brand-right">Premium fruit powders<br>and botanical extracts</td>
+            </tr>
+          </table>
+
+          <table class="hero-grid" role="presentation" cellpadding="0" cellspacing="0">
+            <tr>
+              <td class="hero-copy">
+                <div class="kicker">Now Live</div>
+                <h1>Your next quote can start online.</h1>
+                <p>
+                  We’ve introduced a new, more streamlined way to request quotes for <strong>fruit powders</strong> and <strong>botanical extracts</strong> directly through our website — built to help B2B buyers move faster.
+                </p>
+              </td>
+              <td class="hero-panel">
+                <div class="mini-card">
+                  <div class="mini-label">Why it matters</div>
+                  <div class="mini-big">Less back-and-forth</div>
+                  <div class="mini-text">Share product, volume, pricing goals, and sample needs upfront so our team can respond with better commercial direction.</div>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="section">
+          <table class="split-intro" role="presentation" cellpadding="0" cellspacing="0">
+            <tr>
+              <td class="split-left">
+                <div class="eyebrow">Built for sourcing efficiency</div>
+                <h2 class="section-title">A more polished way to start the buying conversation</h2>
+                <p class="section-copy">
+                  Hi {{ first_name }},<br><br>
+                  Instead of sending multiple follow-ups to clarify the basics, you can now submit the key quote details all at once. It’s a cleaner experience for your team and a faster way for ours to understand what you need.
+                </p>
+              </td>
+              <td class="split-right">
+                <div class="stat-box">
+                  <div class="stat-title">Designed to capture</div>
+                  <div class="stat-main">4 buying signals</div>
+                  <div class="stat-copy">Products needed, target volume, pricing guidance, and sample requests — all in one flow.</div>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="process-wrap">
+          <div class="process-title">How the new quote flow works</div>
+          <div class="form-preview-wrap">
+            <div class="form-preview">
+              <table class="form-row" role="presentation" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td class="product-cell">
+                    <div class="product-name">Acai Freeze Dried Powder</div>
+                  </td>
+                  <td class="fields-cell">
+                    <table class="mini-fields" role="presentation" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td class="mini-field" style="width:22%;">
+                          <div class="mini-label-ui">Quote Request *</div>
+                          <div class="input-box">Amount</div>
+                        </td>
+                        <td class="mini-field" style="width:22%;">
+                          <div class="mini-label-ui">Target Price</div>
+                          <div class="input-box">Price</div>
+                        </td>
+                        <td class="mini-field" style="width:20%;">
+                          <div class="mini-label-ui">Annual Qty</div>
+                          <div class="input-box">Amount</div>
+                        </td>
+                        <td class="mini-field" style="width:12%;">
+                          <div class="mini-label-ui">Unit</div>
+                          <div class="select-box">KG</div>
+                        </td>
+                        <td class="mini-field" style="width:12%;">
+                          <div class="mini-label-ui">Sample</div>
+                          <div class="select-box">No</div>
+                        </td>
+                        <td class="quote-btn-cell">
+                          <div class="mini-label-ui">&nbsp;</div>
+                          <div class="quote-btn-preview">Add to Quote</div>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="preview-caption">A quick visual preview of the online quote selector your team can now use directly on the website.</div>
+          </div>
+          <table class="timeline" role="presentation" cellpadding="0" cellspacing="0">
+            <tr>
+              <td class="timeline-step">
+                <div class="step-shell">
+                  <div class="step-no">1</div>
+                  <div class="step-title">Choose products</div>
+                  <div class="step-copy">Select the ingredients relevant to your formulation or sourcing plan.</div>
+                </div>
+              </td>
+              <td class="timeline-step">
+                <div class="step-shell">
+                  <div class="step-no">2</div>
+                  <div class="step-title">Add quantity</div>
+                  <div class="step-copy">Tell us the volume you are targeting so we can quote more intelligently.</div>
+                </div>
+              </td>
+              <td class="timeline-step">
+                <div class="step-shell">
+                  <div class="step-no">3</div>
+                  <div class="step-title">Set price goals</div>
+                  <div class="step-copy">Share your budget expectations to align faster on commercial fit.</div>
+                </div>
+              </td>
+              <td class="timeline-step">
+                <div class="step-shell">
+                  <div class="step-no">4</div>
+                  <div class="step-title">Request samples</div>
+                  <div class="step-copy">Include sample needs upfront if evaluation is part of your decision process.</div>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="cta-band">
+          <div class="cta-kicker">American B2B tone • premium presentation • sales-driven CTA</div>
+          <div class="cta-title">Ready to send your next quote request?</div>
+          <div class="cta-copy">Use the new form to make your inquiry more complete from the start — and help our team respond with faster, more useful next steps.</div>
+          <a href="https://www.newacaiamazonas.com/quote-submission" class="button">START YOUR REQUEST</a>
+          <div class="cta-note">Or explore our ingredient portfolio before submitting.</div>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="reply-section">
+          <div class="reply-card">
+            <p><strong>Prefer email?</strong> You can still reply directly with your requirements, and I’ll be happy to support your request personally.</p>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="signature">
+          Best regards,<br>
+          <strong>Debora Siqueira</strong><br>
+          New Acai Amazonas
+        </td>
+      </tr>
+
+      <tr>
+        <td class="footer">
+          <div class="footer-brand">New Acai Amazonas</div>
+          <div class="footer-copy">
+            Premium ingredients from Brazil for modern B2B sourcing teams<br>
+            <a href="https://www.newacaiamazonas.com">Website</a> &nbsp;•&nbsp; <a href="https://www.linkedin.com/company/new-acai-amazonas">LinkedIn</a> &nbsp;•&nbsp; <a href="https://www.instagram.com/newacaiamazonas">Instagram</a>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </center>
+</body>
+</html>
