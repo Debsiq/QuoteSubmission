@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dashboard de Performance por Template - New Acai Amazonas</title>
+<style>
+:root{
+  --bg:#ffffff;
+  --card:#ffffff;
+  --card2:#f9fafb;
+  --text:#111827;
+  --muted:#6b7280;
+  --green:#16a34a;
+  --red:#dc2626;
+  --amber:#d97706;
+  --blue:#2563eb;
+  --purple:#7c3aed;
+  --line:#e5e7eb;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:#ffffff;
+  font-family:Inter,Arial,sans-serif;
+  color:var(--text);
+}
+
+main{
+  max-width:1180px;
+  margin:0 auto;
+  padding:34px 22px 60px;
+}
+
+.hero{
+  display:grid;
+  grid-template-columns:1.4fr .6fr;
+  gap:18px;
+  align-items:stretch;
+}
+
+.panel{
+  background:#ffffff;
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:24px;
+  box-shadow:0 14px 36px rgba(17,24,39,.08);
+}
+
+.card{
+  background:#ffffff;
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:18px;
+  box-shadow:0 10px 28px rgba(17,24,39,.06);
+}
+
+h1{
+  font-size:36px;
+  line-height:1.05;
+  margin:0 0 12px;
+}
+
+h2{
+  font-size:22px;
+  margin:0 0 16px;
+}
+
+h3{
+  font-size:16px;
+  margin:16px 0 8px;
+}
+
+.subtitle{
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.55;
+  margin:0;
+}
+
+.pill{
+  display:inline-flex;
+  gap:8px;
+  align-items:center;
+  background:#f9fafb;
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:8px 12px;
+  color:var(--muted);
+  font-size:13px;
+  margin:0 8px 8px 0;
+}
+
+.grid4{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin:18px 0;
+}
+
+.kpi{
+  background:#f9fafb;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:18px;
+  color:#111827;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9);
+}
+
+.kpi .label{
+  color:var(--muted);
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+
+.kpi .num{
+  font-size:34px;
+  font-weight:800;
+  margin-top:8px;
+}
+
+.kpi .note{
+  color:var(--muted);
+  font-size:12px;
+  margin-top:6px;
+}
+
+.good{color:var(--green)}
+.bad{color:var(--red)}
+.warn{color:var(--amber)}
+.blue{color:var(--blue)}
+.purple{color:var(--purple)}
+.neutral{color:#111827}
+
+.section{margin-top:18px}
+
+.cards2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+
+.barrow{margin:14px 0}
+
+.barlabel{
+  display:flex;
+  justify-content:space-between;
+  font-size:13px;
+  color:#374151;
+  margin-bottom:7px;
+}
+
+.track{
+  height:13px;
+  background:#eef2f7;
+  border-radius:999px;
+  overflow:hidden;
+  border:1px solid var(--line);
+}
+
+.fill{
+  height:100%;
+  border-radius:999px;
+  background:var(--green);
+}
+
+.fill.red{background:var(--red)}
+.fill.amber{background:var(--amber)}
+.fill.blue{background:var(--blue)}
+
+table{
+  width:100%;
+  border-collapse:separate;
+  border-spacing:0;
+  border:1px solid var(--line);
+  border-radius:18px;
+  overflow:hidden;
+  font-size:14px;
+  background:#ffffff;
+}
+
+th,td{
+  padding:13px 12px;
+  text-align:left;
+  border-bottom:1px solid var(--line);
+  vertical-align:top;
+}
+
+th{
+  color:var(--muted);
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.07em;
+  background:#f9fafb;
+}
+
+tr:last-child td{border-bottom:0}
+tr:hover td{background:#f9fafb}
+
+.tag{
+  display:inline-block;
+  padding:5px 9px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:700;
+  white-space:nowrap;
+}
+
+.tag.hot{background:#fee2e2;color:#b91c1c}
+.tag.ok{background:#dcfce7;color:#166534}
+.tag.mid{background:#fef3c7;color:#92400e}
+.tag.info{background:#dbeafe;color:#1d4ed8}
+.tag.gray{background:#f3f4f6;color:#4b5563}
+
+.small{
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.55;
+}
+
+.template-box{
+  background:#f9fafb;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:18px;
+  line-height:1.55;
+  color:#111827;
+}
+
+.email-copy{
+  white-space:pre-line;
+  background:#ffffff;
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:16px;
+  color:#111827;
+  font-size:13px;
+  box-shadow:inset 0 1px 0 rgba(17,24,39,.03);
+}
+
+.summary-card{display:grid;gap:12px}
+
+.summary-item{
+  padding:13px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.summary-item strong{
+  display:block;
+  margin-bottom:4px;
+}
+
+.result-note{
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.45;
+}
+
+.footer{
+  margin-top:22px;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.6;
+}
+
+@media(max-width:860px){
+  .hero,.cards2,.grid4{grid-template-columns:1fr}
+  h1{font-size:30px}
+  table{font-size:12px}
+}
+</style>
+</head>
+<body><main>
+<section class="hero">
+  <div class="panel">
+    <span class="pill">🍌 Banana</span><span class="pill">🫐 Blueberry</span><span class="pill">Dietary Supplements Database</span>
+    <h1>Dashboard de performance das campanhas de prospecção</h1>
+  </div>
+</section>
+
+<section class="grid4">
+  <div class="card">
+    <h2>📊 Emails Enviados</h2>
+    <p class="kpi">2.808</p>
+    <p>Blueberry e Banana</p>
+</div>
+
+<div class="card">
+    <h2>📩 Respostas de Email</h2>
+    <p class="kpi">23</p>
+    <p>Debora e Fernanda</p>
+</div>
+
+<div class="card">
+    <h2>🍌 Banana</h2>
+    <p class="kpi">1.627 emails</p>
+    <p>743 empresas prospectadas</p>
+</div>
+
+<div class="card">
+    <h2>🫐 Blueberry</h2>
+    <p class="kpi">1.184 emails</p>
+    <p>521 empresas prospectadas</p>
+</div>
+</section>
+
+<section class="panel section">
+ <h2>🔥 Performance por Template (Baseado em Threads Reais)</h2>
+<table>
+<tr>
+<th>Template (Início do Email)</th>
+<th>Respostas</th>
+</tr>
+
+<tr>
+<td>
+<strong>“Are you the right person to contact regarding sourcing…”</strong><br>
+(Contact Request)
+</td>
+<td class="kpi">14</td>
+</tr>
+
+<tr>
+<td>
+<strong>“Hi, are you the purchasing or R&D for ingredients…”</strong><br>
+(Ingredients Purchasing Department)
+</td>
+<td class="kpi">6</td>
+</tr>
+
+<tr>
+<td>
+<strong>“Hi, nice to e-meet you! I'm Débora from New Açaí Amazonas…”</strong><br>
+(Quick Question)
+</td>
+<td class="kpi">2</td>
+</tr>
+
+</table>
+</section>
+
+<section class="cards2 section">
+  <div class="panel">
+    <h2>🥇 Template mais completo</h2>
+    <div class="template-box">
+      <strong>Quick Question - Ingredient Supplier</strong><br>
+      Melhor porque não parece apenas uma checagem fria de contato. Ele explica quem somos, cita os ingredientes e faz uma pergunta simples sobre uso de fruit powders.
+    </div>
+    <h3>Template recomendado para escalar</h3>
+    <div class="email-copy">Hi [Name],
+
+Hi, nice to e-meet you!
+
+I'm Débora from New Açaí Amazonas, we are a USA based manufacturer specializing in Fruit Powders and Botanical Extracts, like Acai, Acerola, Blueberry, Strawberry, and Dragon Fruit and many others!
+
+We supply similar dietary supplement brands, offering a highly consistent supply with our fruit powders, and I was wondering if you are already using fruit powders in your formulations?
+
+If so, I’d love to explore if we might be a good fit!
+
+Also, if you aren't the best person to discuss this with, would you mind pointing me to the right contact for ingredient sourcing?
+
+Thanks in advance! 😊
+Débora</div>
+  </div>
+    <div class="panel">
+    <h2>🥇 Template com maior taxa de resposta</h2>
+    <div class="template-box">
+      <strong>Contact Request</strong><br>
+      Melhor porque ele é sucinto e a maioria ja nos respondia com sim ou nao, ou encaminhava para a pessoa correta
+    </div>
+    <h3>Template recomendado para escalar</h3>
+    <div class="email-copy">Hi [Name],
+Are you the right person to contact regarding sourcing, supply and R&D for ingredients?
+</div>
+</section>
+
+<section class="panel section">
+  <h2>📩 Análise detalhada das respostas - Pipeline de Leads</h2>
+  <table>
+    <thead><tr><th>Empresa</th><th>Contato</th><th>Rep</th><th>Campanha</th><th>Template</th><th>Resuminho do que deu</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>NutraBio</td><td>Michael Perez - Product Development Manager</td><td>Fernanda</td><td>Blueberry</td><td>Contact Request</td><td>Pediu amostras e depois solicitou specification sheets; já recebeu specs de acai, banana, strawberry, mango e blueberry.</td><td><span class="tag hot">Lead quente - samples + specs</span></td></tr>
+      <tr><td>SP Nutraceuticals</td><td>Nawaz Ahmed - Director of Research and Operations</td><td>Fernanda</td><td>Banana</td><td>Contact Request</td><td>Pediu detalhes sobre capacidade de fabricação, custom ingredients, facility e mencionou avocado pulp powder/extract com possível NDA e call.</td><td><span class="tag hot">Lead muito quente - custom project</span></td></tr>
+      <tr><td>NaturesPlus</td><td>Rafael Avila - VP R&amp;D</td><td>Fernanda</td><td>Blueberry</td><td>Contact Request</td><td>Disse que compram muitos ingredientes que carregamos; pediu material pesquisável e disse que encaminharia para Purchasing.</td><td><span class="tag hot">Interesse claro - vai ao Purchasing</span></td></tr>
+      <tr><td>NaturesPlus</td><td>Kimberly Galgano - Buyer</td><td>Débora</td><td>Blueberry</td><td>Contact Request</td><td>Confirmou ser buyer e pediu lista atualizada de produtos; bom contato para catálogo, price comparison e próximos passos.</td><td><span class="tag hot">Pediu lista de produtos</span></td></tr>
+      <tr><td>Body Nutrition</td><td>Corey Wilson</td><td>Débora</td><td>Banana</td><td>Quick Question</td><td>Informou que acredita que já compra da New Acai; oportunidade de expansão para banana e outros fruit powders.</td><td><span class="tag hot">Já cliente - expandir</span></td></tr>
+
+      <tr><td>Vibrant Health</td><td>Tiffany Hillary - Production Specialist</td><td>Fernanda</td><td>Blueberry</td><td>Ingredients Purchasing</td><td>Confirmou ser contato principal para raw material purchasing e pediu lista; materiais precisam passar por NGP approval.</td><td><span class="tag mid">Contato certo - lista/NGP</span></td></tr>
+      <tr><td>NaturesPlus</td><td>Kimberly Galgano - Buyer</td><td>Fernanda</td><td>Blueberry</td><td>Ingredients Purchasing</td><td>Confirmou que é purchasing; depois disse que manteria as informações em arquivo caso surgisse necessidade.</td><td><span class="tag mid">Purchasing - manter em arquivo</span></td></tr>
+      <tr><td>Wholistic Botanicals</td><td>Candi Davis</td><td>Fernanda</td><td>Blueberry</td><td>Follow-up após indicação</td><td>Disse que normalmente só usa Acerola Cherry powder; Fernanda enviou specs de acerola 17% e 25% vitamina C.</td><td><span class="tag mid">Acerola - possível oportunidade</span></td></tr>
+      <tr><td>Bucked Up</td><td>Gregg Lybbert</td><td>Débora</td><td>Banana</td><td>Contact Request</td><td>Não compram muitos ingredientes diretamente, usam co-manufacturers; demonstrou abertura para ingredientes únicos com estudos clínicos.</td><td><span class="tag mid">Co-man / interesse técnico</span></td></tr>
+      <tr><td>Healthy Origins</td><td>Matthew Eby</td><td>Débora</td><td>Banana</td><td>Contact Request</td><td>Confirmou ser o contato certo; Débora enviou follow-up sobre fruit powders, fit com portfólio e convite para call.</td><td><span class="tag mid">Contato certo - follow-up enviado</span></td></tr>
+      <tr><td>HuMAN</td><td>Jeff Brucker</td><td>Débora</td><td>Blueberry</td><td>Contact Request</td><td>Confirmou ser o ponto de contato; Débora enviou abordagem personalizada com fit para HeartGreens/Superfood Powder.</td><td><span class="tag mid">Contato certo</span></td></tr>
+      <tr><td>ecoNugenics</td><td>Chris Giacolone - VP Marketing</td><td>Débora</td><td>Blueberry</td><td>Contact Request</td><td>Pediu mais informações sobre o objetivo do contato; Débora explicou fruit powders e abriu conversa sobre price comparison/lista de ingredientes.</td><td><span class="tag mid">Pediu mais informação</span></td></tr>
+      <tr><td>ABS-RX</td><td>Charles Tarara - GMP Assistant</td><td>Débora</td><td>Banana</td><td>Contact Request</td><td>Não decide, mas faz pesquisa preliminar; aceitou conversa, porém explicou que a empresa é pequena e compra pouco volume.</td><td><span class="tag mid">Pesquisa preliminar / nutrir</span></td></tr>
+
+      <tr><td>FoodScience Corp</td><td>Hollis Bedell - Innovation</td><td>Fernanda</td><td>Blueberry</td><td>Ingredients Purchasing</td><td>Não é purchasing/R&amp;D, mas trabalha com inovação e ofereceu encaminhar informações para R&amp;D e purchasing.</td><td><span class="tag info">Ponte interna para R&amp;D/Purchasing</span></td></tr>
+      <tr><td>FoodScience Corp</td><td>Leanna Crane - Sales</td><td>Fernanda</td><td>Blueberry</td><td>Contact Request</td><td>Não é o contato correto, mas se ofereceu para encaminhar informações ao time apropriado.</td><td><span class="tag info">Ponte interna</span></td></tr>
+      <tr><td>Swanson Health</td><td>Doris Haggar / Anushka Chhabria</td><td>Fernanda</td><td>Blueberry</td><td>Ingredients Purchasing</td><td>Doris encaminhou Fernanda para Anushka, do Product Development, para continuar a conversa.</td><td><span class="tag info">Redirecionou ao Product Dev</span></td></tr>
+      <tr><td>Dr. Christopher / Wholistic Botanicals</td><td>Kami Hindes / Candi Davis</td><td>Fernanda</td><td>Blueberry</td><td>Ingredients Purchasing</td><td>Kami não era o contato certo, mas forneceu o email da buyer Candi.</td><td><span class="tag info">Contato direto fornecido</span></td></tr>
+      <tr><td>Ka'Chava</td><td>Cheryl Munce / Annabelle Lam</td><td>Débora</td><td>Blueberry</td><td>Contact Request</td><td>Cheryl não faz sourcing, mas copiou Annabelle para ajudar a chegar na pessoa correta.</td><td><span class="tag info">Redirecionou sourcing</span></td></tr>
+      <tr><td>EFX Sports</td><td>Mike Bieker / Joe Archer</td><td>Débora</td><td>Banana</td><td>Contact Request</td><td>Mike apresentou Joe; Joe disse que passaria para purchasing e product development caso houvesse necessidade.</td><td><span class="tag info">Redirecionou para compras/PD</span></td></tr>
+      <tr><td>Organic Traditions</td><td>Giovanna Manzi</td><td>Fernanda</td><td>Blueberry</td><td>Contact Request</td><td>Não é responsável, mas disse que encaminharia o contato para a pessoa correta se houvesse interesse.</td><td><span class="tag info">Redirecionado</span></td></tr>
+
+      <tr><td>New Generation Wellness</td><td>Rhonda Yeater - Director of Quality</td><td>Fernanda</td><td>Blueberry</td><td>Ingredients Purchasing</td><td>Respondeu apenas “no”; Fernanda tentou reabrir perguntando sobre fruit powders e botanical extracts em formulações.</td><td><span class="tag gray">Resposta negativa / sem avanço</span></td></tr>
+      <tr><td>AB Energy Canada</td><td>Nirupaben Makwana - Purchasing</td><td>Débora</td><td>Banana</td><td>Contact Request</td><td>Confirmou ser purchasing, mas depois informou que a empresa é de energia e não tem envolvimento com fruit powders.</td><td><span class="tag gray">Fora do escopo</span></td></tr>
+      <tr><td>Vibrant Health</td><td>Jeff Santiago - Dir. Finance</td><td>Débora</td><td>Banana</td><td>Quick Question</td><td>Respondeu que não há necessidade ou interesse no momento; Débora enviou lista para caso mude no futuro.</td><td><span class="tag gray">Sem interesse</span></td></tr>
+    </tbody>
+  </table>
+</section>
+</main></body></html>
